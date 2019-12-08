@@ -1,0 +1,4 @@
+Package    Version
+---------- -------
+pip        19.0.3 
+setuptools 40.8.0 
