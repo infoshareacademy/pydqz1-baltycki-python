@@ -5,7 +5,7 @@ user_name = ""
 user_surname = ""
 email = ""
 nick = ""
-address = []
+address = ""
 
 def generate_name():
     pass
