@@ -1,5 +1,5 @@
-from random import choice
-
+import random
+import json
 
 def surname():
     surname_list = []
@@ -7,4 +7,4 @@ def surname():
         for line in f:
             person = line.split()
             surname_list.append(person[1])
-    return choice(surname_list)
+    return random.choice(surname_list)
