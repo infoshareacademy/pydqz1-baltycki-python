@@ -1,5 +1,4 @@
 import random
-import json
 
 user_name = ""
 user_surname = ""
@@ -11,7 +10,13 @@ def generate_name():
     pass
 
 def generate_surname():
-    pass
+    surname_list = []
+    with open('person.txt', 'r') as f:
+        for line in f:
+            person = line.split()
+            surname_list.append(person[1])
+    user_surname = random.choice(surname_list)
+    return user_surname
 
 def generate_email():
     pass
