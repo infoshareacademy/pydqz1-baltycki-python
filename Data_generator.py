@@ -9,7 +9,12 @@ address = ""
 
 
 def generate_name():
-    pass
+    with open('person.txt', 'r') as f:
+        for line in f:
+            person = line.split()
+            name_list.append(person[0])
+    user_name = random.choice(name_list)
+    return user_name
 
 
 def generate_surname():
