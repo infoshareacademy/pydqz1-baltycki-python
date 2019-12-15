@@ -1,0 +1,41 @@
+00-153,ul. Nowolipki,Warszawa
+00-154,ul. Dzielna,Warszawa
+00-155,ul. Karmelicka,Warszawa
+00-157,ul. Anielewicza Mordechaja,Warszawa
+00-158,ul. Nalewki,Warszawa
+00-159,al. Generała Andersa Władysława,Warszawa
+00-159,ul. Dawidowskiego Alka,Warszawa
+00-160,ul. Zamenhofa Ludwika,Warszawa
+09-410,ul. Wyszogrodzka,Płock
+09-411,ul. Biała,Biała
+09-413,ul. Sikórz,Sikórz
+09-440,ul. Kościelna,Staroźreby
+80-012,ul. Figowa,Gdańsk
+80-012,ul. Głogowa,Gdańsk
+80-012,ul. Gronowa,Gdańsk
+80-012,ul. Jagodowa,Gdańsk
+80-012,ul. Krokusowa,Gdańsk
+80-012,ul. Stroma,Gdańsk
+80-012,ul. Zawilcowa,Gdańsk
+80-013,ul. Wąwóz,Gdańsk
+80-014,ul. Rzeczna,Gdańsk
+80-016,ul. Zawiejska,Gdańsk
+80-017,ul. Trakt Świętego Wojciecha,Gdańsk
+80-020,ul. Nowiny,Gdańsk
+81-658,ul. Gajowa,Gdynia
+81-659,ul. Wąska,Gdynia
+81-660,ul. Narcyzowa,Gdynia
+81-661,ul. II Morskiego Pułku Strzelców,Gdynia
+81-702,ul. Kościuszki Tadeusza,Sopot
+81-702,ul. Lipowa,Sopot
+81-703,ul. Kościuszki Tadeusza,Sopot
+81-703,ul. Skłodowskiej Curie Marii,Sopot
+10-018,ul. Staromiejska,Olsztyn
+10-019,ul. Gazety Olsztyńskiej,Olsztyn
+10-019,ul. Targ Rybny,Olsztyn
+16-300,ul. Rynek Zygmunta Augusta,Augustów
+16-301,ul. Komunalna,Augustów
+14-300,ul. 11 Listopada,Morąg
+15-085,ul. Branickiego Jana Klemensa,Białystok
+82-309, ul. Modlińska,Elbląg
+82-310, Pl. Dworcowy,Elbląg
