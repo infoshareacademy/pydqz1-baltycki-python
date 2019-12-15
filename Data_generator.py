@@ -1,19 +1,71 @@
 import random
 import json
 
-user_name = ""
-user_surname = ""
-email = ""
-nick = ""
-address = ""
+
+def main():
+    menu = """
+    Select F for first name
+    Select L for last name
+    Select N for nick
+    Select E for e-mail
+    Select A for address
+    Select S for full set 
+    Select J for JSON
+    Select X for XML 
+    Select Q to quit
+
+    Select: 
+    """
+
+    selection = input(menu)
+
+    while selection not in ("Q", "q"):
+        if selection in ("F", "f"):
+            user_name = generate_name()
+            print("First name: {}".format(user_name))
+        elif selection in ("L", "l"):
+            user_surname = generate_surname()
+            print("Last name: {}".format(user_surname))
+        elif selection in ("N", "n"):
+            nick = generate_nick()
+            print("Nick: {}".format(nick))
+        elif selection in ("E", "e"):
+            e_mail = generate_email()
+            print("E-mail: {}".format(e_mail))
+        elif selection in ("A", "a"):
+            address = generate_address()
+            print("Address: {}".format(address))
+        elif selection in ("S", "s"):
+            pass
+        elif selection in ("J", "j"):
+            pass
+        elif selection in ("X", "x"):
+            pass
+        else:
+            print("Unknown command")
+        input("Press any to continue...")
+        selection = input(menu)
+    print("Program terminated")
 
 
 def generate_name():
-    pass
+    name_list = []
+    with open('person.txt', 'r') as f:
+        for line in f:
+            person = line.split()
+            name_list.append(person[0])
+    user_name = random.choice(name_list)
+    return user_name
 
 
 def generate_surname():
-    pass
+    surname_list = []
+    with open('person.txt', 'r') as f:
+        for line in f:
+            person = line.split()
+            surname_list.append(person[1])
+    user_surname = random.choice(surname_list)
+    return user_surname
 
 
 def generate_email():
@@ -30,11 +82,14 @@ def generate_email():
     return full_mail
 
 
-email = generate_email()
-
-
 def generate_nick():
-    pass
+    nick_list = []
+    with open("nick.txt", "r") as f:
+        for line in f:
+            line = line.strip('\n')
+            nick_list.append(line)
+    nickname = random.choice(nick_list)
+    return nickname
 
 
 def generate_address():
@@ -54,4 +109,4 @@ def generate_address():
     return full_address
 
 
-address = generate_address()
+main()
