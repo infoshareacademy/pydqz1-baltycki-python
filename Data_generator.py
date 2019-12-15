@@ -17,7 +17,13 @@ def generate_email():
     pass
 
 def generate_nick():
-    pass
+    with open("nick.txt", "r") as f:
+        for line in f:
+            person = line.strip('\n')
+            nick.append(person)
+    nickname = random.choice(nick)
+    return nickname
+
 
 def generate_address():
     pass
