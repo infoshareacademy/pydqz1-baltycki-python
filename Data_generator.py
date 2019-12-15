@@ -22,7 +22,7 @@ def generate_email():
         for line in f:
             line = line.strip('\n')
             email_body.append(line)
-    domain = [".com", ".org", ".mil", ".net", ".edu", ".pl", ".de", ".fr", ".ie", ".us", ".co.uk"]
+    domain = [".com", ".pl"]
     local_part = random.choice(email_body)
     host_name = random.choice(email_body)
     mail_domain = random.choice(domain)
