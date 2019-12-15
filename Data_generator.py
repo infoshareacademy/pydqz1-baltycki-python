@@ -7,11 +7,14 @@ email = ""
 nick = ""
 address = ""
 
+
 def generate_name():
     pass
 
+
 def generate_surname():
     pass
+
 
 def generate_email():
     email_body = []
@@ -20,16 +23,19 @@ def generate_email():
             line = line.strip('\n')
             email_body.append(line)
     domain = [".com", ".org", ".mil", ".net", ".edu", ".pl", ".de", ".fr", ".ie", ".us", ".co.uk"]
-    local_part = email_body[random.randint(0, len(email_body) - 1)]
-    host_name = email_body[random.randint(0, len(email_body) - 1)]
-    mail_domain = (domain[random.randint(0, len(domain) - 1)])
-    full_email = local_part + "@" + host_name + mail_domain
-    return full_email
+    local_part = random.choice(email_body)
+    host_name = random.choice(email_body)
+    mail_domain = random.choice(domain)
+    full_mail = local_part + "@" + host_name + mail_domain
+    return full_mail
+
 
 email = generate_email()
 
+
 def generate_nick():
     pass
+
 
 def generate_address():
     code = []
@@ -41,10 +47,11 @@ def generate_address():
             code.append(address_data[0])
             street.append(address_data[1])
             city.append(address_data[2])
-    city_code = code[random.randint(0, len(code) - 1)]
-    city_name = city[random.randint(0, len(city) - 1)]
-    city_street = street[random.randint(0, len(street) - 1)]
-    full_address = city_code + " " + city_name.strip('\n') + ", " + city_street + " " + str(random.randint(1,100))
+    city_code = random.choice(code)
+    city_name = random.choice(city)
+    city_street = random.choice(street)
+    full_address = city_code + " " + city_name.strip('\n') + ", " + city_street + " " + str(random.randint(1, 100))
     return full_address
+
 
 address = generate_address()
