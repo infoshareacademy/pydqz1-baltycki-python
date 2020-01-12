@@ -36,11 +36,26 @@ def main():
             address = generate_address()
             print("Address: {}".format(address))
         elif selection in ("S", "s"):
-            pass
+            user_name = generate_name()
+            user_surname = generate_surname()
+            nick = generate_nick()
+            e_mail = generate_email()
+            address = generate_address()
+            full_set(user_name, user_surname, nick, e_mail, address)
         elif selection in ("J", "j"):
-            pass
+            user_name = generate_name()
+            user_surname = generate_surname()
+            nick = generate_nick()
+            e_mail = generate_email()
+            address = generate_address()
+            save_to_json(user_name, user_surname, nick, e_mail, address)
         elif selection in ("X", "x"):
-            pass
+            user_name = generate_name()
+            user_surname = generate_surname()
+            nick = generate_nick()
+            e_mail = generate_email()
+            address = generate_address()
+            save_to_xml(user_name, user_surname, nick, e_mail, address)
         else:
             print("Unknown command")
         input("Press any to continue...")
@@ -88,7 +103,7 @@ def generate_nick():
         for line in f:
             line = line.strip('\n')
             nick_list.append(line)
-    nickname = random.choice(nick_list)
+    nickname = random.choice(nick_list) + str(random.randint(1, 100))
     return nickname
 
 
@@ -107,6 +122,61 @@ def generate_address():
     city_street = random.choice(street)
     full_address = city_code + " " + city_name.strip('\n') + ", " + city_street + " " + str(random.randint(1, 100))
     return full_address
+
+
+def full_set(user_name, user_surname, nick, e_mail, address):
+
+    data = {"First name": user_name, "Last name": user_surname,
+            "Nick": nick, "E-mail": e_mail, "Address": address}
+
+    for key, value in data.items():
+        print(key + ": " + value)
+    return data
+
+
+def save_to_json(user_name, user_surname, nick, e_mail, address):
+    import json
+
+    json_data = {"First name": user_name, "Last name": user_surname, "Nick": nick, "E-mail": e_mail,
+                 "Address": address}
+
+    json_string = json.dumps(json_data)
+
+    with open("data.json", "w") as f:
+        f.write(json_string)
+
+    print(json_string)
+    print("Test data saved to data.json file")
+
+
+def save_to_xml(user_name, user_surname, nick, e_mail, address):
+    import xml.etree.ElementTree as xml
+
+    root = xml.Element("Test data")
+    cl = xml.Element("User")
+    root.append(cl)
+
+    name1 = xml.SubElement(cl, "First name")
+    name1.text = user_name
+
+    surname1 = xml.SubElement(cl, "Last name")
+    surname1.text = user_surname
+
+    nick1 = xml.SubElement(cl, "Nick")
+    nick1.text = nick
+
+    email1 = xml.SubElement(cl, "Email")
+    email1.text = e_mail
+
+    address1 = xml.SubElement(cl, "Address")
+    address1.text = address
+
+    tree = xml.ElementTree(root)
+
+    with open("User.xml", "wb") as files:
+        tree.write(files)
+
+    print("Test data saved to user.xml file")
 
 
 main()
