@@ -2,88 +2,33 @@ import random
 import json
 
 
-def main():
-    menu = """
-    Select F for first name
-    Select L for last name
-    Select N for nick
-    Select E for e-mail
-    Select A for address
-    Select S for full set 
-    Select J for JSON
-    Select X for XML 
-    Select Q to quit
-
-    Select: 
-    """
-
-    selection = input(menu)
-
-    while selection not in ("Q", "q"):
-        if selection in ("F", "f"):
-            user_name = generate_name()
-            print("First name: {}".format(user_name))
-        elif selection in ("L", "l"):
-            user_surname = generate_surname()
-            print("Last name: {}".format(user_surname))
-        elif selection in ("N", "n"):
-            nick = generate_nick()
-            print("Nick: {}".format(nick))
-        elif selection in ("E", "e"):
-            e_mail = generate_email()
-            print("E-mail: {}".format(e_mail))
-        elif selection in ("A", "a"):
-            address = generate_address()
-            print("Address: {}".format(address))
-        elif selection in ("S", "s"):
-            user_name = generate_name()
-            user_surname = generate_surname()
-            nick = generate_nick()
-            e_mail = generate_email()
-            address = generate_address()
-            full_set(user_name, user_surname, nick, e_mail, address)
-        elif selection in ("J", "j"):
-            user_name = generate_name()
-            user_surname = generate_surname()
-            nick = generate_nick()
-            e_mail = generate_email()
-            address = generate_address()
-            save_to_json(user_name, user_surname, nick, e_mail, address)
-        elif selection in ("X", "x"):
-            user_name = generate_name()
-            user_surname = generate_surname()
-            nick = generate_nick()
-            e_mail = generate_email()
-            address = generate_address()
-            save_to_xml(user_name, user_surname, nick, e_mail, address)
-        else:
-            print("Unknown command")
-        input("Press any to continue...")
-        selection = input(menu)
-    print("Program terminated")
-
-
-def generate_name():
+def generate_name(ptf=True):
     name_list = []
     with open('person.txt', 'r') as f:
         for line in f:
             person = line.split()
             name_list.append(person[0])
     user_name = random.choice(name_list)
+    if ptf is True:
+        with open("log.data", "a+") as f:
+            f.write(user_name + "\n")
     return user_name
 
 
-def generate_surname():
+def generate_surname(ptf=True):
     surname_list = []
     with open('person.txt', 'r') as f:
         for line in f:
             person = line.split()
             surname_list.append(person[1])
     user_surname = random.choice(surname_list)
+    if ptf is True:
+        with open("log.data", "a+") as f:
+            f.write(user_surname + "\n")
     return user_surname
 
 
-def generate_email():
+def generate_email(ptf=True):
     email_body = []
     with open("words.txt", "r") as f:
         for line in f:
@@ -93,21 +38,28 @@ def generate_email():
     local_part = random.choice(email_body)
     host_name = random.choice(email_body)
     mail_domain = random.choice(domain)
-    full_mail = local_part + "@" + host_name + mail_domain
-    return full_mail
+    e_mail = local_part + "@" + host_name + mail_domain
+    if ptf is True:
+        with open("log.data", "a+") as f:
+            f.write(e_mail + "\n")
+    return e_mail
 
 
-def generate_nick():
+def generate_nick(ptf=True):
     nick_list = []
     with open("nick.txt", "r") as f:
         for line in f:
             line = line.strip('\n')
             nick_list.append(line)
-    nickname = random.choice(nick_list) + str(random.randint(1, 100))
-    return nickname
+    nick = random.choice(nick_list) + str(random.randint(1, 100))
+    if ptf is True:
+        with open("log.data", "a+") as f:
+            f.write(nick + "\n")
+    return nick
 
 
-def generate_address():
+def generate_address(ptf=True):
+    address = {}
     code = []
     street = []
     city = []
@@ -120,12 +72,18 @@ def generate_address():
     city_code = random.choice(code)
     city_name = random.choice(city)
     city_street = random.choice(street)
-    full_address = city_code + " " + city_name.strip('\n') + ", " + city_street + " " + str(random.randint(1, 100))
-    return full_address
+    address["Postal code"] = city_code
+    address["City"] = city_name.strip('\n')
+    address["Street"] = city_street + " " + str(random.randint(1, 100))
+    if ptf is True:
+        with open("log.data", "a+") as f:
+            save_address = address["Postal code"] + ", " + address["City"] + ", " + address["Street"]
+            f.write(save_address + "\n")
+    return address
 
 
+''' 
 def full_set(user_name, user_surname, nick, e_mail, address):
-
     data = {"First name": user_name, "Last name": user_surname,
             "Nick": nick, "E-mail": e_mail, "Address": address}
 
@@ -144,9 +102,6 @@ def save_to_json(user_name, user_surname, nick, e_mail, address):
 
     with open("data.json", "w") as f:
         f.write(json_string)
-
-    print(json_string)
-    print("Test data saved to data.json file")
 
 
 def save_to_xml(user_name, user_surname, nick, e_mail, address):
@@ -174,9 +129,4 @@ def save_to_xml(user_name, user_surname, nick, e_mail, address):
     tree = xml.ElementTree(root)
 
     with open("User.xml", "wb") as files:
-        tree.write(files)
-
-    print("Test data saved to user.xml file")
-
-
-main()
+        tree.write(files)'''
