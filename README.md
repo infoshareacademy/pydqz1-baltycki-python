@@ -1,8 +1,62 @@
-<img src="https://f4fcdn.eu/wp-content/uploads/2017/07/photowrzesien-shutterstock.jpg" title="BParg, Baltycki Python Awesome Random Generator" alt="BParg, Baltycki Python Awesome Random Generator">
-# BParg, Baltycki Python Awesome Random Generator
+# Data Generator
 
-[![Latest Version](https://img.shields.io/github/release/guzzle/guzzle.svg?style=flat-square)](https://github.com/infoshareacademy/pydqz1-baltycki-python)
-![Build Status](https://github.com/guzzle/guzzle/workflows/CI/badge.svg?style=flat-square)
-[![Total Downloads](https://img.shields.io/packagist/dt/guzzlehttp/guzzle.svg?style=flat-square)](https://packagist.org/packages/guzzlehttp/guzzle)
+Data Generator library allows to generate a numer of random data:
+- First name
+- Last name
+- E-mail
+- Nick
+- Address (Postal code, City, Street)
+- Full set (including all of the above data)
 
-> BParg is Python 3 script that creates random user data from provided txt file. The data is saved into JSON file.
+Address and full set return data in the form of a dictionary, therefore a specific 
+
+Each of the the "generate" functions uses "ptf" input parameter - the default setting is "True".
+
+```
+if ptf is True:
+  print("Generated data is saved into json file")
+else:
+  print("Json file is not updated")
+```
+
+## Installation
+
+Just copy Data_generator.py to your project folder.
+
+## Usage
+
+```
+import Data_generator as dg
+
+newname = dg.generate_name(ptf=False)
+print(newname)
+# returns Wiesława 
+
+newsurname = dg.generate_surname(ptf=False)
+print(newsurname)
+# returns Nowicka
+
+newnick = dg.generate_nick(ptf=True)
+print(newnick)
+# returns Margherita12
+
+newaddres = dg.generate_address(ptf=True)
+print(newaddres)
+# returns {'Postal code': '82-309', 'City': 'Warszawa', 'Street': 'ul. Gajowa 55'}
+
+newmail = dg.generate_email(ptf=False)
+print(newmail)
+# returns private@clap.com
+
+newset = dg.generate_full_set(ptf=False)
+print(newset)
+# returns {'First name': 'Jacek', 'Last name': 'Kozłowska', 'Nick': 'Elenor62', 'E-mail': 'punch@baby.com', 'Address': {'Postal code': '00-159', 'City': 'Sopot', 'Street': 'ul. Nalewki 45'}}
+
+
+```
+
+## Authors and acknowledgment
+This project wouldn't be in the
+
+## Project status
+The project is still in the development phase. Saving to json functionality (updating the contents of the file) is still being implemented.
