@@ -50,13 +50,20 @@ print(newmail)
 
 newset = dg.generate_full_set(ptf=False)
 print(newset)
-# returns {'First name': 'Jacek', 'Last name': 'Kozłowska', 'Nick': 'Elenor62', 'E-mail': 'punch@baby.com', 'Address': {'Postal code': '00-159', 'City': 'Sopot', 'Street': 'ul. Nalewki 45'}}
+# returns {'First name': 'Jacek', 'Last name': 'Kozłowska', 'Nick': 'Elenor62', 'E-mail': 'punch@baby.com', 
+'Address': {'Postal code': '00-159', 'City': 'Sopot', 'Street': 'ul. Nalewki 45'}}
 
 
 ```
 
 ## Authors and acknowledgment
-This project wouldn't be in the
+This project wouldn't be in the current stage wihout the hard work of the following individuals:
+- Agnieszka
+- Monika
+- Mateusz
+- Marcin
+
+We would also like to thank Jacek for his guidance and support.
 
 ## Project status
 The project is still in the development phase. Saving to json functionality (updating the contents of the file) is still being implemented.
