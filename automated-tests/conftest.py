@@ -1,20 +1,20 @@
 import pytest
+import time
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.wait import WebDriverWait
+from page_object_pattern.pages.shopping_cart import ShoppingCart
 
 
 @pytest.fixture()
 def setup(request):
-# te akcje zostsaną wykonane przed testem:
     driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver.implicitly_wait(10)
+    driver.get('http://automationpractice.com/index.php')
     driver.maximize_window()
+    driver.implicitly_wait(10)
     request.cls.driver = driver
-    """It's easy - request.cls is the test class using the fixture, so request.cls.driver = ...
-    is essentially the same as MyTestClass.driver = ... if MyTestClass uses the fixture.
-    https://pytest.readthedocs.io/en/2.8.7/builtin.html"""
-
-# te akcje zostaną po wykonaniu akcji z plików z testami:
+    request.cls.wait = WebDriverWait(driver, 15)
+    request.cls.shoppingCart = ShoppingCart(driver)
     yield
+    time.sleep(2)
     driver.quit()
-

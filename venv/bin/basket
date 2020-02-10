@@ -1,0 +1,12 @@
+#!/home/azg/Documents/Projekt_grupowy/pydqz1-baltycki-python/venv/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'Basket==1.0','console_scripts','basket'
+__requires__ = 'Basket==1.0'
+import re
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(
+        load_entry_point('Basket==1.0', 'console_scripts', 'basket')()
+    )

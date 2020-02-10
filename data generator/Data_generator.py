@@ -84,7 +84,7 @@ def generate_address(ptf=True):
     address["City"] = city_name.strip('\n')
     address["Street"] = city_street + " " + str(random.randint(1, 100))
     if ptf is True:
-        with open("data.json", "a+") as f:
+        with open("data.json", "a+", encoding='utf8') as f:
             json.dump(address, f, indent=2)
     return address
 
