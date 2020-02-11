@@ -1,2 +1,5 @@
 pip==19.0.3
 setuptools==40.8.0
+pytest==5.3.4
+selenium==3.141.0
+webdriver-manager==2.3.0
