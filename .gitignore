@@ -1,4 +1,3 @@
-.IDEA
+/.idea
+/venv
 *.pyc
-venv
-.pytest_cache
