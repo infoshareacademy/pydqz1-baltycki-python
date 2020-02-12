@@ -1,3 +1,4 @@
 .IDEA
 *.pyc
 venv
+.pytest_cache
