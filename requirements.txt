@@ -1,5 +1,6 @@
-pip==19.0.3
-setuptools==40.8.0
-pytest==5.3.4
+pip==20.0.2
+setuptools==45.2.0
+pytest==5.3.5
 selenium==3.141.0
 webdriver-manager==2.3.0
+allure-pytest==2.8.10
