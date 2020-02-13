@@ -9,7 +9,7 @@ class CartPageSignIn:
         self.registered_user_password_text_box = '#passwd'
         self.registered_user_signin_button = '#SubmitLogin'
 
-    def action_on_page(self):
+    def login_as_registered_user(self):
         self.driver.find_element_by_css_selector(self.registered_user_email_text_box).send_keys\
             ('varihig919@era7mail.com')
         self.driver.find_element_by_css_selector(self.registered_user_password_text_box).send_keys('12345')
