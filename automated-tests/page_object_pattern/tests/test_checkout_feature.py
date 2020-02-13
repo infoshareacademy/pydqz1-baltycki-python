@@ -37,9 +37,8 @@ class TestCheckoutFeature:
         cart_order_summary.click_order_confirmation_buton()
         cart_order_confirmation = CartPageOrderConfirmation(self.driver)
         order_complete = cart_order_confirmation.get_order_confiramation_text()
-        sleep(2)
+        sleep(1)
         assert 'Your order on My Store is complete.' == order_complete, 'No order complete text on page'
-        sleep(2)
 
     def test_registered_user_pay_by_check(self):
         """Happy path: registered user with one item in cart paid by check"""
@@ -64,9 +63,8 @@ class TestCheckoutFeature:
         cart_order_summary.click_order_confirmation_buton()
         cart_order_confirmation = CartPageOrderConfirmation(self.driver)
         order_complete = cart_order_confirmation.get_order_confiramation_text()
-        sleep(2)
+        sleep(1)
         assert 'Your order on My Store is complete.' == order_complete, 'No order complete text on page'
-        sleep(2)
 
     def test_registered_user_iframe_pay_by_bank_wire(self):
         """Happy path: registered user with one item in cart added from iframe paid by bank wire"""
@@ -74,7 +72,7 @@ class TestCheckoutFeature:
         main_page = MainPage(self.driver)
         main_page.click_on_product_dress()
         main_page.switch_to_product_iframe()
-        sleep(1)
+        sleep(1.5)
         main_page.click_on_add_to_cart_button_product_iframe()
         main_page.click_on_checkout_button_cart_layer()
         cart_summary = CartPageSummary(self.driver)
@@ -92,9 +90,8 @@ class TestCheckoutFeature:
         cart_order_summary.click_order_confirmation_buton()
         cart_order_confirmation = CartPageOrderConfirmation(self.driver)
         order_complete = cart_order_confirmation.get_order_confiramation_text()
-        sleep(2)
+        sleep(1)
         assert 'Your order on My Store is complete.' == order_complete, 'No order complete text on page'
-        sleep(2)
 
     def test_registered_user_iframe_pay_by_check(self):
         """Happy path: registered user with one item in cart added from iframe paid by check"""
@@ -102,7 +99,7 @@ class TestCheckoutFeature:
         main_page = MainPage(self.driver)
         main_page.click_on_product_dress()
         main_page.switch_to_product_iframe()
-        sleep(1)
+        sleep(1.5)
         main_page.click_on_add_to_cart_button_product_iframe()
         main_page.click_on_checkout_button_cart_layer()
         cart_summary = CartPageSummary(self.driver)
@@ -120,6 +117,5 @@ class TestCheckoutFeature:
         cart_order_summary.click_order_confirmation_buton()
         cart_order_confirmation = CartPageOrderConfirmation(self.driver)
         order_complete = cart_order_confirmation.get_order_confiramation_text()
-        sleep(2)
+        sleep(1)
         assert 'Your order on My Store is complete.' == order_complete, 'No order complete text on page'
-        sleep(2)
