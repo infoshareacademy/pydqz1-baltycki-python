@@ -9,6 +9,7 @@ from ..pages.cart_page_shipping import CartPageShipping
 from ..pages.cart_page_payment import CartPagePayment
 from ..pages.cart_page_order_summary import CartPageOrderSummary
 from ..pages.cart_page_order_confirmation import CartPageOrderConfirmation
+from ..pages.create_account_page import CreateAccountPage
 
 
 @pytest.mark.usefixtures('setup')
@@ -113,6 +114,35 @@ class TestCheckoutFeature:
         cart_shipping.click_checkout_button()
         cart_payment = CartPagePayment(self.driver)
         cart_payment.click_pay_by_check()
+        cart_order_summary = CartPageOrderSummary(self.driver)
+        cart_order_summary.click_order_confirmation_buton()
+        cart_order_confirmation = CartPageOrderConfirmation(self.driver)
+        order_complete = cart_order_confirmation.get_order_confiramation_text()
+        sleep(1)
+        assert 'Your order on My Store is complete.' == order_complete, 'No order complete text on page'
+
+    def test_unregistered_user_pay_by_bank_wire(self):
+        """Happy path: unregistered user with one item in cart paid by bank wire"""
+        self.driver.get('http://automationpractice.com/index.php')
+        main_page = MainPage(self.driver)
+        main_page.click_on_product_tshirt()
+        product_page = ProductPage(self.driver)
+        product_page.add_product_to_cart()
+        product_page.click_on_checkout_button_cart_layer()
+        cart_summary = CartPageSummary(self.driver)
+        cart_summary.click_checkout_button()
+        cart_sigin = CartPageSignIn(self.driver)
+        cart_sigin.create_new_account()
+        create_account = CreateAccountPage(self.driver)
+        create_account.enter_user_data()
+        create_account.click_register_button()
+        cart_address = CartPageAddresses(self.driver)
+        cart_address.click_checkout_button()
+        cart_shipping = CartPageShipping(self.driver)
+        cart_shipping.enable_checkbox()
+        cart_shipping.click_checkout_button()
+        cart_payment = CartPagePayment(self.driver)
+        cart_payment.click_pay_by_bank_wire()
         cart_order_summary = CartPageOrderSummary(self.driver)
         cart_order_summary.click_order_confirmation_buton()
         cart_order_confirmation = CartPageOrderConfirmation(self.driver)
