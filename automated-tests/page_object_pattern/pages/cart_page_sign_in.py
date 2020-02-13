@@ -14,3 +14,8 @@ class CartPageSignIn:
             ('varihig919@era7mail.com')
         self.driver.find_element_by_css_selector(self.registered_user_password_text_box).send_keys('12345')
         self.driver.find_element_by_css_selector(self.registered_user_signin_button).click()
+
+    def create_new_account(self):
+        self.driver.find_element_by_css_selector(self.create_account_email_text_box).send_keys\
+            ('2pantestowy@era7mail.com')
+        self.driver.find_element_by_css_selector(self.create_account_button).click()
