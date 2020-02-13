@@ -8,4 +8,6 @@ class ProductPage:
 
     def add_product_to_cart(self):
         self.driver.find_element_by_css_selector(self.product_add_to_cart_button).click()
+
+    def click_on_checkout_button_cart_layer(self):
         self.driver.find_element_by_css_selector(self.cart_layer_checkout_button).click()
