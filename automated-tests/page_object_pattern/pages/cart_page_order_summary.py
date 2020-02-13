@@ -5,5 +5,5 @@ class CartPageOrderSummary:
         self.search_box = '.search_query'
         self.confirm_order_button = '#cart_navigation button[type="submit"]'
 
-    def action_on_page(self):
+    def click_order_confirmation_buton(self):
         self.driver.find_element_by_css_selector(self.confirm_order_button).click()

@@ -5,5 +5,5 @@ class CartPageSummary:
         self.search_box = '.search_query'
         self.checkout_button = '.standard-checkout'
 
-    def action_on_page(self):
+    def click_checkout_button(self):
         self.driver.find_element_by_css_selector(self.checkout_button).click()

@@ -6,9 +6,8 @@ class CartPageShipping:
         self.terms_of_service_checkbox = '#cgv'
         self.checkout_button = 'button[name="processCarrier"]'
 
-    def action_on_page(self):
+    def enable_checkbox(self):
         self.driver.find_element_by_css_selector(self.terms_of_service_checkbox).click()
-        self.driver.find_element_by_css_selector(self.checkout_button).click()
 
-    def failed_action_on_page(self):
+    def click_checkout_button(self):
         self.driver.find_element_by_css_selector(self.checkout_button).click()

@@ -5,5 +5,5 @@ class MainPage:
         self.search_box = '.search_query'
         self.product_faded_short_tshirt = 'Faded Short Sleeve T-shirts'
 
-    def action_on_page(self):
+    def click_on_product(self):
         self.driver.find_element_by_link_text(self.product_faded_short_tshirt).click()

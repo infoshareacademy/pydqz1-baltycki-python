@@ -6,5 +6,5 @@ class CartPageAddresses:
         self.create_account_email_text_box = '#email_create'
         self.checkout_button = 'button[name="processAddress"]'
 
-    def action_on_page(self):
+    def click_checkout_button(self):
         self.driver.find_element_by_css_selector(self.checkout_button).click()
