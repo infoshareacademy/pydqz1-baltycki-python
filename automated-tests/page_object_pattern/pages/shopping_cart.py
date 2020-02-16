@@ -35,16 +35,17 @@ class ShoppingCart:
         return alert.text
 
     def select_item(self):
-        # self.driver.execute_script("window.scrollTo(0, 900)")
+        self.driver.execute_script("window.scrollTo(0, 1000)")
         self.driver.find_element_by_css_selector(self.shop_item_css)
 
     def add_to_cart(self):
+
         self.driver.find_element_by_css_selector(self.add_to_cart_btn_css).click()
 
-    def log_in(self):
+    def log_in(self, user, password):
         self.driver.find_element_by_css_selector(self.sign_in_button_css).click()
-        self.driver.find_element_by_id(self.email_field_css).send_keys('mobiy43403@cityroyal.org')
-        self.driver.find_element_by_id(self.password_field_css).send_keys('qwerty123')
+        self.driver.find_element_by_id(self.email_field_css).send_keys(user)
+        self.driver.find_element_by_id(self.password_field_css).send_keys(password)
         self.driver.find_element_by_css_selector(self.sign_in_btn_css).click()
 
     def go_back_to_main_page(self):
