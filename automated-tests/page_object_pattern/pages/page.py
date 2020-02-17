@@ -27,3 +27,10 @@ class BasePage:
 
     def switch_to_default(self):
         self.driver.switch_to.default_content()
+
+    def hover_to(self, by_locator):
+        element = WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located(by_locator))
+        ActionChains(self.driver).move_to_element(element).perform()
+
+    def get_product_price(self, by_locator):
+        return WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located(by_locator)).get

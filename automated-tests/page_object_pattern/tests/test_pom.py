@@ -18,10 +18,10 @@ class TestCheckoutFeature:
         self.home.click(CommonPageLocators.PRODUCT_QUICKVIEW_COLOR_BLUE)
         self.home.click(CommonPageLocators.ADD_TO_CART_BUTTON)
         self.home.switch_to_default()
-
+        self.home.click(CommonPageLocators.CART_LAYER_CONTINUE_BUTTON)
+        self.home.hover_to(CommonPageLocators.PRODUCT_PRINTED_DRESS)
         sleep(2)
         self.home.search_for('tshirts')
         sleep(1)
         self.home.click(CommonPageLocators.PAGE_LOGO)
         sleep(1)
-
