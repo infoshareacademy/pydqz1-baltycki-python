@@ -21,6 +21,7 @@ class ShoppingCart:
         self.continue_shopping_btn_css = '.continue.btn.btn-default.button.exclusive-medium[title="Continue shopping"]'
         self.cart_quantity_main_page_css = '.ajax_cart_quantity.unvisible'
         self.cart_quantity_summary_css = '#summary_products_quantity'
+        self.remove_from_cart_btn_css = 'header#header span > a'
 
     def login_button_exists(self):
         sign_in_btn = self.driver.find_element_by_css_selector(self.sign_in_button_css)
@@ -68,5 +69,8 @@ class ShoppingCart:
     def check_item_in_cart_summary(self):
         quantity_summary = self.driver.find_element_by_css_selector(self.cart_quantity_summary_css)
         return quantity_summary.text
+
+    def remove_from_cart_main_page(self):
+        self.driver.find_element_by_css_selector(self.remove_from_cart_btn_css).click()
 
 
