@@ -35,12 +35,32 @@ class TestShoppingCart:
         self.shoppingCart.select_item()
         time.sleep(2)
         self.shoppingCart.add_to_cart()
+        time.sleep(2)
+        self.shoppingCart.continue_shopping()
+        self.shoppingCart.hover_over_cart()
+        # check that 1 item was added to the shopping cart and is displayed on main page
+        assert self.shoppingCart.check_item_in_cart_main_page() == '1'
+        self.shoppingCart.select_cart()
+        time.sleep(2)
+        # check that 1 item was added to the shopping cart and is displayed in summary
+        assert self.shoppingCart.check_item_in_cart_summary() == '1 Product'
 
     def test_add_to_shopping_cart_logged_out(self, setup):
         time.sleep(2)
         self.shoppingCart.select_item()
         time.sleep(2)
         self.shoppingCart.add_to_cart()
+        time.sleep(2)
+        self.shoppingCart.continue_shopping()
+        self.shoppingCart.hover_over_cart()
+        # check that 1 item was added to the shopping cart and is displayed on main page
+        assert self.shoppingCart.check_item_in_cart_main_page() == '1'
+        self.shoppingCart.select_cart()
+        time.sleep(2)
+        # check that 1 item was added to the shopping cart and is displayed in summary
+        assert self.shoppingCart.check_item_in_cart_summary() == '1 Product'
+
+
 
     '''
     def test_remove_item_from_shopping_cart_logged_in(self, setup):

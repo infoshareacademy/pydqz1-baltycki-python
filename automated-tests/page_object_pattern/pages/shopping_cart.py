@@ -10,14 +10,17 @@ class ShoppingCart:
         self.shopping_cart_summary_css = 'h1#cart_title.page-heading'
         self.sign_in_button_css = '.login'
         self.quick_view_btn_css = '.quick-view'
-        self.shop_item_css = '.product-name [title*="T-shirts"]'
-        self.add_to_cart_btn_css = '#add_to_cart'
+        self.shop_item_css = 'ul#homefeatured li:nth-child(2) > div > div.left-block > div > a.product_img_link [title="Blouse"] '
+        self.add_to_cart_btn_css = 'ul#homefeatured li:nth-child(2) > div > div.right-block > div.button-container > a.button.ajax_add_to_cart_button.btn.btn-default[title="Add to cart"][data-id-product="2"]'
         self.proceed_to_checkout_btn_css = '.btn.btn-default.button.button-medium'
         self.continue_shopping_btn_css = '.continue.btn.btn-default.button.exclusive-medium'
         self.email_field_css = 'email'
         self.password_field_css = 'passwd'
         self.sign_in_btn_css = '#SubmitLogin'
         self.logo_css = '.logo.img-responsive'
+        self.continue_shopping_btn_css = '.continue.btn.btn-default.button.exclusive-medium[title="Continue shopping"]'
+        self.cart_quantity_main_page_css = '.ajax_cart_quantity.unvisible'
+        self.cart_quantity_summary_css = '#summary_products_quantity'
 
     def login_button_exists(self):
         sign_in_btn = self.driver.find_element_by_css_selector(self.sign_in_button_css)
@@ -36,10 +39,10 @@ class ShoppingCart:
 
     def select_item(self):
         self.driver.execute_script("window.scrollTo(0, 1000)")
-        self.driver.find_element_by_css_selector(self.shop_item_css)
+        shop_item = self.driver.find_element_by_css_selector(self.shop_item_css)
+        ActionChains(self.driver).move_to_element(shop_item).perform()
 
     def add_to_cart(self):
-
         self.driver.find_element_by_css_selector(self.add_to_cart_btn_css).click()
 
     def log_in(self, user, password):
@@ -50,3 +53,20 @@ class ShoppingCart:
 
     def go_back_to_main_page(self):
         self.driver.find_element_by_css_selector(self.logo_css).click()
+
+    def continue_shopping(self):
+        self.driver.find_element_by_css_selector(self.continue_shopping_btn_css).click()
+
+    def hover_over_cart(self):
+        cart_main_page = self.driver.find_element_by_css_selector(self.my_shopping_cart_css)
+        ActionChains(self.driver).move_to_element(cart_main_page).perform()
+
+    def check_item_in_cart_main_page(self):
+        quantity = self.driver.find_element_by_css_selector(self.cart_quantity_main_page_css)
+        return quantity.text
+
+    def check_item_in_cart_summary(self):
+        quantity_summary = self.driver.find_element_by_css_selector(self.cart_quantity_summary_css)
+        return quantity_summary.text
+
+
