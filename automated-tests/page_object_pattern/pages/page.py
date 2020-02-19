@@ -22,8 +22,11 @@ class BasePage:
 
     def switch_to(self, by_locator):
         iframe = WebDriverWait(self.driver, 10).until((ec.visibility_of_element_located
-                                                       (CommonPageLocators.PRODUCT_QUICKVIEW)))
+                                                       (by_locator)))
         self.driver.switch_to.frame(iframe)
+
+    def get_the_value(self, by_locator):
+        return WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located(by_locator)).text
 
     def switch_to_default(self):
         self.driver.switch_to.default_content()
@@ -34,3 +37,8 @@ class BasePage:
 
     def get_product_price(self, by_locator):
         return WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located(by_locator)).get
+
+    def enter_to_input(self, by_locator, data):
+        input = WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located(by_locator))
+        input.clear()
+        input.send_keys(data)
