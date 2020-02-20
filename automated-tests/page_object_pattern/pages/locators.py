@@ -6,7 +6,11 @@ class CommonPageLocators:
     SEARCH_BAR = (By.CSS_SELECTOR, '#search_query_top')
     SEARCH_GO_BUTTON = (By.CSS_SELECTOR, 'button[name="submit_search"]')
     ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, 'button[name="Submit"]')
+    SHOPPING_CART = (By.CSS_SELECTOR, 'a[title="View my shopping cart"]')
     CART_AJAX_EMPTY = (By.CSS_SELECTOR, '.ajax_cart_no_product')
+    CHECKOUT_BUTTON = (By.CSS_SELECTOR, '.standard-checkout')
+    CONTINUE_BUTTON = (By.CSS_SELECTOR, '.button-exclusive')
+    MENU_LOGIN = (By.CSS_SELECTOR, '.login')
     PRODUCT_FADED_TSHIRTS = (By.CSS_SELECTOR, '#homefeatured .product-container a[title="Faded Short Sleeve T-shirts"]')
     PRODUCT_PRINTED_DRESS = (By.CSS_SELECTOR, '#homefeatured .product-container a[title="Printed Chiffon Dress"]')
     PRODUCT_SUMMER_DRESS = (By.CSS_SELECTOR, '.product-image-container a[title="Printed Summer Dress"]')
@@ -28,3 +32,12 @@ class CommonPageLocators:
     MENU_WOMEN_DRESSES = (By.CSS_SELECTOR, '.submenu-container a[title="Dresses"]')
     QUANTITY_INPUT = (By.CSS_SELECTOR, '#quantity_wanted')
 
+
+class OrderPageLocators(CommonPageLocators):
+    EMAIL_INPUT = (By.CSS_SELECTOR, '#email')
+    PASSWORD_INPUT = (By.CSS_SELECTOR, '#passwd')
+    SIGN_IN = (By.CSS_SELECTOR, '#SubmitLogin')
+    PROCEED_TO_CHECKOUT_BUTTON = (By.CSS_SELECTOR, '.cart_navigation button[type="submit"]')
+    TERMS_CHECK_BOX = (By.CSS_SELECTOR, 'label[for="cgv"]')
+    PAY_BY_BANK_WIRE = (By.CSS_SELECTOR, '.bankwire')
+    PAY_BY_CHECK = (By.CSS_SELECTOR, '.cheque')
