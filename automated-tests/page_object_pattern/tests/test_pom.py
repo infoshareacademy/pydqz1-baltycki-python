@@ -1,5 +1,6 @@
 from time import sleep
 import pytest
+import allure
 from faker import Faker
 from ..pages.page import BasePage
 from ..pages.locators import CommonPageLocators, OrderPageLocators
@@ -8,11 +9,13 @@ faker = Faker()
 f_email = faker.email()
 
 
+@allure.description('Testing checkout feature')
 @pytest.mark.usefixtures('setup')
 class TestCheckoutFeature:
     """
 
     """
+    @allure.title('Registered user with 2 items in cart, paid by bank wire')
     @pytest.mark.parametrize('user, password', [('varihig924@era7mail.com', '12345')])
     def test_buying001(self, user, password):
         self.home = BasePage(self.driver)
