@@ -13,7 +13,6 @@ class ShoppingCart:
         self.shop_item_css = 'ul#homefeatured li:nth-child(2) > div > div.left-block > div > a.product_img_link [title="Blouse"] '
         self.add_to_cart_btn_css = 'ul#homefeatured li:nth-child(2) > div > div.right-block > div.button-container > a.button.ajax_add_to_cart_button.btn.btn-default[title="Add to cart"][data-id-product="2"]'
         self.proceed_to_checkout_btn_css = '.btn.btn-default.button.button-medium'
-        self.continue_shopping_btn_css = '.continue.btn.btn-default.button.exclusive-medium'
         self.email_field_css = 'email'
         self.password_field_css = 'passwd'
         self.sign_in_btn_css = '#SubmitLogin'
@@ -22,6 +21,10 @@ class ShoppingCart:
         self.cart_quantity_main_page_css = '.ajax_cart_quantity.unvisible'
         self.cart_quantity_summary_css = '#summary_products_quantity'
         self.remove_from_cart_btn_css = 'header#header span > a'
+        self.log_me_out_button_css = '.logout'
+        self.quick_view_btn_css = 'ul#homefeatured li:nth-child(2) > div > div.left-block > div > a.quick-view > span'
+        self.add_to_cart_quick_view_css = 'ul#homefeatured li:nth-child(2) > div > div.left-block > div > a.quick-view'
+        self.wishlist_btn_css ='#wishlist_button'
 
     def login_button_exists(self):
         sign_in_btn = self.driver.find_element_by_css_selector(self.sign_in_button_css)
@@ -73,4 +76,18 @@ class ShoppingCart:
     def remove_from_cart_main_page(self):
         self.driver.find_element_by_css_selector(self.remove_from_cart_btn_css).click()
 
+    def proceed_to_checkout_main_page(self):
+        self.driver.find_element_by_css_selector(self.proceed_to_checkout_btn_css).click()
 
+    def log_me_out_button_exists(self):
+        sign_out_btn = self.driver.find_element_by_css_selector(self.log_me_out_button_css)
+        return sign_out_btn.is_displayed()
+
+    def select_quick_view(self):
+        self.driver.find_element_by_css_selector(self.quick_view_btn_css).click()
+
+    def add_to_cart_quick_view(self):
+        self.driver.find_element_by_css_selector(self.add_to_cart_quick_view_css).click()
+
+    def add_to_wish_list(self):
+        self.driver.find_element_by_css_selector(self.wishlist_btn_css).click()
