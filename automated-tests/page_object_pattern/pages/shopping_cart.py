@@ -10,8 +10,11 @@ class ShoppingCart:
         self.shopping_cart_summary_css = 'h1#cart_title.page-heading'
         self.sign_in_button_css = '.login'
         self.quick_view_btn_css = '.quick-view'
-        self.shop_item_css = 'ul#homefeatured li:nth-child(2) > div > div.left-block > div > a.product_img_link [title="Blouse"] '
-        self.add_to_cart_btn_css = 'ul#homefeatured li:nth-child(2) > div > div.right-block > div.button-container > a.button.ajax_add_to_cart_button.btn.btn-default[title="Add to cart"][data-id-product="2"]'
+        self.shop_item_css = 'ul#homefeatured li:nth-child(2) > div > div.left-block > div > a.product_img_link [' \
+                             'title="Blouse"] '
+        self.add_to_cart_btn_css = 'ul#homefeatured li:nth-child(2) > div > div.right-block > div.button-container > ' \
+                                   'a.button.ajax_add_to_cart_button.btn.btn-default[title="Add to cart"][' \
+                                   'data-id-product="2"] '
         self.proceed_to_checkout_btn_css = '.btn.btn-default.button.button-medium'
         self.email_field_css = 'email'
         self.password_field_css = 'passwd'
@@ -24,7 +27,8 @@ class ShoppingCart:
         self.log_me_out_button_css = '.logout'
         self.quick_view_btn_css = 'ul#homefeatured li:nth-child(2) > div > div.left-block > div > a.quick-view > span'
         self.add_to_cart_quick_view_css = 'ul#homefeatured li:nth-child(2) > div > div.left-block > div > a.quick-view'
-        self.wishlist_btn_css ='#wishlist_button'
+        self.wishlist_btn_css = '#wishlist_button'
+        self.add_to_cart_btn_details_view_css = 'p#add_to_cart span'
 
     def login_button_exists(self):
         sign_in_btn = self.driver.find_element_by_css_selector(self.sign_in_button_css)
@@ -91,3 +95,9 @@ class ShoppingCart:
 
     def add_to_wish_list(self):
         self.driver.find_element_by_css_selector(self.wishlist_btn_css).click()
+
+    def add_to_cart_details_view(self):
+        self.driver.find_element_by_css_selector(self.add_to_cart_btn_details_view_css).click()
+
+    def move_to_details_view(self):
+        self.driver.find_element_by_css_selector(self.shop_item_css).click()

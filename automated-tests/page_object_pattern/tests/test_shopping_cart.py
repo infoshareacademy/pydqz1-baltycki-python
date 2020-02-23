@@ -106,13 +106,47 @@ class TestShoppingCart:
         assert self.shoppingCart.log_me_out_button_exists() is True
         # check that 1 item was added to the shopping cart and is displayed in summary
         assert self.shoppingCart.check_item_in_cart_summary() == '1 Product'
-'''
+
     def test_quick_view_logged_out(self, setup):
         time.sleep(2)
         self.shoppingCart.select_item()
         time.sleep(2)
         self.shoppingCart.select_quick_view()
+        # time.sleep(2)
+        # self.shoppingCart.add_to_wish_list()
+        # self.shoppingCart.add_to_cart_quick_view()
+
+    def test_details_view_logged_out(self, setup):
         time.sleep(2)
-        self.shoppingCart.add_to_wish_list()
-        self.shoppingCart.add_to_cart_quick_view()
-'''
+        self.shoppingCart.select_item()
+        time.sleep(2)
+        self.shoppingCart.move_to_details_view()
+        time.sleep(2)
+        self.shoppingCart.add_to_cart_details_view()
+        self.shoppingCart.continue_shopping()
+        self.shoppingCart.hover_over_cart()
+        # check that 1 item was added to the shopping cart and is displayed on main page
+        assert self.shoppingCart.check_item_in_cart_main_page() == '1'
+        self.shoppingCart.select_cart()
+        time.sleep(2)
+        # check that 1 item was added to the shopping cart and is displayed in summary
+        assert self.shoppingCart.check_item_in_cart_summary() == '1 Product'
+
+    def test_details_view_logged_in(self, setup):
+        time.sleep(2)
+        self.shoppingCart.log_in('mobiy43403@cityroyal.org', 'qwerty123')
+        self.shoppingCart.go_back_to_main_page()
+        time.sleep(2)
+        self.shoppingCart.select_item()
+        time.sleep(2)
+        self.shoppingCart.move_to_details_view()
+        time.sleep(2)
+        self.shoppingCart.add_to_cart_details_view()
+        self.shoppingCart.continue_shopping()
+        self.shoppingCart.hover_over_cart()
+        # check that 1 item was added to the shopping cart and is displayed on main page
+        assert self.shoppingCart.check_item_in_cart_main_page() == '1'
+        self.shoppingCart.select_cart()
+        time.sleep(2)
+        # check that 1 item was added to the shopping cart and is displayed in summary
+        assert self.shoppingCart.check_item_in_cart_summary() == '1 Product'
