@@ -6,11 +6,11 @@ import time
 class TestShoppingCart:
 
     def test_shopping_cart_empty_not_logged(self, setup):
-        time.sleep(2)
         # check whether 'Sign in' button is displayed
         assert self.shoppingCart.login_button_exists() is True
         # check the contents of the cart visible on the main page - it should be empty
-        assert self.shoppingCart.main_page_cart_status() == '(empty)'
+        assert self.shoppingCart.main_page_cart_status() == '(empty)', 'Cart content should be empty -> ' + self.\
+            shoppingCart.main_page_cart_status()
         self.shoppingCart.select_cart()
         time.sleep(2)
         # check that 'Your shopping cart is empty.' alert is displayed when you enter the shopping cart
