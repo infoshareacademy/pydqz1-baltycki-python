@@ -1,7 +1,6 @@
 from time import sleep
 import pytest
 import allure
-from faker import Faker
 from ..pages.page import BasePage
 from ..pages.locators import CommonPageLocators
 
