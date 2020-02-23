@@ -1,4 +1,6 @@
 import pytest
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 from selenium.webdriver.support.ui import Select
 
@@ -7,7 +9,7 @@ from ..pages.register_page import RegisterPage
 
 
 @pytest.mark.usefixtures('setup')
-class TestSignupPage:
+class TestSignupPage():
 
     def register_setup(self):
         self.driver.get('http://automationpractice.com/index.php')
