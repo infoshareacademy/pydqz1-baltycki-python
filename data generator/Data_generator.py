@@ -2,6 +2,16 @@ import random
 import json
 
 
+def save_to_json(value):
+    with open("data.json", "a+", encoding='utf8') as f:
+        if f.tell() == 0:
+            json.dump(value, f, ensure_ascii=False, indent=4)
+        else:
+            separator = ',\n'
+            f.write(separator)
+            json.dump(value, f, ensure_ascii=False, indent=4)
+
+
 def generate_name(ptf=True):
     name_to_json = {}
     name_list = []
@@ -12,8 +22,7 @@ def generate_name(ptf=True):
     user_name = random.choice(name_list)
     if ptf is True:
         name_to_json["First name"] = user_name
-        with open("data.json", "a+") as f:
-            json.dump(name_to_json, f, indent=2)
+        save_to_json(name_to_json)
     return user_name
 
 
@@ -27,8 +36,7 @@ def generate_surname(ptf=True):
     user_surname = random.choice(surname_list)
     if ptf is True:
         surname_to_json["Last name"] = user_surname
-        with open("data.json", "a+") as f:
-            json.dump(surname_to_json, f, indent=2)
+        save_to_json(surname_to_json)
     return user_surname
 
 
@@ -46,8 +54,7 @@ def generate_email(ptf=True):
     e_mail = local_part + "@" + host_name + mail_domain
     if ptf is True:
         email_to_json["E-mail"] = e_mail
-        with open("data.json", "a+") as f:
-            json.dump(email_to_json, f, indent=2)
+        save_to_json(email_to_json)
     return e_mail
 
 
@@ -61,8 +68,7 @@ def generate_nick(ptf=True):
     nick = random.choice(nick_list) + str(random.randint(1, 100))
     if ptf is True:
         nick_to_json["Nick"] = nick
-        with open("data.json", "a+") as f:
-            json.dump(nick_to_json, f, indent=2)
+        save_to_json(nick_to_json)
     return nick
 
 
@@ -84,16 +90,13 @@ def generate_address(ptf=True):
     address["City"] = city_name.strip('\n')
     address["Street"] = city_street + " " + str(random.randint(1, 100))
     if ptf is True:
-        with open("data.json", "a+", encoding='utf8') as f:
-            json.dump(address, f, indent=2)
+        save_to_json(address)
     return address
 
 
 def generate_full_set(ptf=True):
-    data = {"First name": generate_name(ptf=False), "Last name": generate_surname(ptf=True),
+    data = {"First name": generate_name(ptf=False), "Last name": generate_surname(ptf=False),
             "Nick": generate_nick(ptf=False), "E-mail": generate_email(ptf=False), "Address": generate_address(ptf=False)}
     if ptf is True:
-        with open("data.json", "a+") as f:
-            json.dump(data, f, indent=2)
+        save_to_json(data)
     return data
-
