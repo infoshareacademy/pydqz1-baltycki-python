@@ -1,4 +1,5 @@
 from selenium.webdriver import ActionChains
+from selenium.webdriver.support.ui import Select
 
 
 class ShoppingCart:
@@ -29,6 +30,11 @@ class ShoppingCart:
         self.add_to_cart_quick_view_css = 'ul#homefeatured li:nth-child(2) > div > div.left-block > div > a.quick-view'
         self.wishlist_btn_css = '#wishlist_button'
         self.add_to_cart_btn_details_view_css = 'p#add_to_cart span'
+        self.plus_btn_detail_view_css = 'p#quantity_wanted_p a.btn.btn-default.button-plus.product_quantity_up > span'
+        self.size_dropdown_css = 'select#group_1'
+        self.color_btn_css = 'a#color_8'
+        self.total_price_css = '#total_product_price_2_12_0'
+        self.size_and_color_css = 'table#cart_summary small:nth-child(3) > a'
 
     def login_button_exists(self):
         sign_in_btn = self.driver.find_element_by_css_selector(self.sign_in_button_css)
@@ -101,3 +107,21 @@ class ShoppingCart:
 
     def move_to_details_view(self):
         self.driver.find_element_by_css_selector(self.shop_item_css).click()
+
+    def add_additional_item(self):
+        self.driver.find_element_by_css_selector(self.plus_btn_detail_view_css).click()
+
+    def change_size(self):
+        dropdown = Select(self.driver.find_element_by_css_selector(self.size_dropdown_css))
+        dropdown.select_by_index(2)
+
+    def change_color(self):
+        self.driver.find_element_by_css_selector(self.color_btn_css).click()
+
+    def check_total_price(self):
+        total_price = self.driver.find_element_by_css_selector(self.total_price_css)
+        return total_price.text
+
+    def check_size_and_color(self):
+        size_color = self.driver.find_element_by_css_selector(self.size_and_color_css)
+        return size_color.text
