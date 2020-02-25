@@ -54,3 +54,4 @@ class CommonPageLocators:
     CREATE_ACC_POST_CODE = (By.CSS_SELECTOR, '#postcode')
     CREATE_ACC_MOBILE_PHONE_INPUT = (By.CSS_SELECTOR, '#phone_mobile')
     CREATE_ACC_REGISTER_BUTTON = (By.CSS_SELECTOR, '#submitAccount')
+    SEARCH_ALERT = (By.CSS_SELECTOR, '#submitAccount')
