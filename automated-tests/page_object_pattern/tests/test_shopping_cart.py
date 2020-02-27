@@ -1,10 +1,13 @@
 import pytest
 import time
+import allure
 
 
 @pytest.mark.usefixtures('setup')
+@allure.description("Tests to validate shopping cart behaviour")
 class TestShoppingCart:
 
+    @allure.title('First launch, basket empty - not logged')
     def test_shopping_cart_empty_not_logged(self, setup):
         time.sleep(2)
         # check whether 'Sign in' button is displayed
@@ -16,6 +19,7 @@ class TestShoppingCart:
         # check that 'Your shopping cart is empty.' alert is displayed when you enter the shopping cart
         assert self.shoppingCart.check_no_contents() == 'Your shopping cart is empty.'
 
+    @allure.title('First launch, basket empty - logged in')
     def test_shopping_cart_empty_logged_in(self, setup):
         time.sleep(2)
         self.shoppingCart.log_in('mobiy43403@cityroyal.org', 'qwerty123')
@@ -27,6 +31,7 @@ class TestShoppingCart:
         # check that 'Your shopping cart is empty.' alert is displayed when you enter the shopping cart
         assert self.shoppingCart.check_no_contents() == 'Your shopping cart is empty.'
 
+    @allure.title('Add item to shopping cart from main menu - logged in')
     def test_add_to_shopping_cart_logged_in(self, setup):
         time.sleep(2)
         self.shoppingCart.log_in('mobiy43403@cityroyal.org', 'qwerty123')
@@ -45,6 +50,7 @@ class TestShoppingCart:
         # check that 1 item was added to the shopping cart and is displayed in summary
         assert self.shoppingCart.check_item_in_cart_summary() == '1 Product'
 
+    @allure.title('Add item to shopping cart from main menu - not logged')
     def test_add_to_shopping_cart_logged_out(self, setup):
         time.sleep(2)
         self.shoppingCart.select_item()
@@ -60,6 +66,7 @@ class TestShoppingCart:
         # check that 1 item was added to the shopping cart and is displayed in summary
         assert self.shoppingCart.check_item_in_cart_summary() == '1 Product'
 
+    @allure.title('Remove item from the shopping cart in main menu - logged in')
     def test_remove_item_from_shopping_cart_logged_in(self, setup):
         time.sleep(2)
         self.shoppingCart.log_in('mobiy43403@cityroyal.org', 'qwerty123')
@@ -80,6 +87,7 @@ class TestShoppingCart:
         # check that 'Your shopping cart is empty.' alert is displayed when you enter the shopping cart
         assert self.shoppingCart.check_no_contents() == 'Your shopping cart is empty.'
 
+    @allure.title('Add item to the shopping cart and proceed to checkout - not logged')
     def test_proceed_to_checkout_logged_out(self, setup):
         time.sleep(2)
         self.shoppingCart.select_item()
@@ -92,6 +100,7 @@ class TestShoppingCart:
         # check that 1 item was added to the shopping cart and is displayed in summary
         assert self.shoppingCart.check_item_in_cart_summary() == '1 Product'
 
+    @allure.title('Add item to the shopping cart and proceed to checkout - logged in')
     def test_proceed_to_checkout_logged_in(self, setup):
         time.sleep(2)
         self.shoppingCart.log_in('mobiy43403@cityroyal.org', 'qwerty123')
@@ -107,15 +116,7 @@ class TestShoppingCart:
         # check that 1 item was added to the shopping cart and is displayed in summary
         assert self.shoppingCart.check_item_in_cart_summary() == '1 Product'
 
-    def test_quick_view_logged_out(self, setup):
-        time.sleep(2)
-        self.shoppingCart.select_item()
-        time.sleep(2)
-        self.shoppingCart.select_quick_view()
-        # time.sleep(2)
-        # self.shoppingCart.add_to_wish_list()
-        # self.shoppingCart.add_to_cart_quick_view()
-
+    @allure.title('Add item to the shopping cart in details view - not logged')
     def test_details_view_logged_out(self, setup):
         time.sleep(2)
         self.shoppingCart.select_item()
@@ -132,6 +133,7 @@ class TestShoppingCart:
         # check that 1 item was added to the shopping cart and is displayed in summary
         assert self.shoppingCart.check_item_in_cart_summary() == '1 Product'
 
+    @allure.title('Add item to the shopping cart in details view - logged in')
     def test_details_view_logged_in(self, setup):
         time.sleep(2)
         self.shoppingCart.log_in('mobiy43403@cityroyal.org', 'qwerty123')
@@ -151,6 +153,7 @@ class TestShoppingCart:
         # check that 1 item was added to the shopping cart and is displayed in summary
         assert self.shoppingCart.check_item_in_cart_summary() == '1 Product'
 
+    @allure.title('Add item to the shopping cart - check contents')
     def test_add_to_cart_check_contents(self, setup):
         time.sleep(2)
         self.shoppingCart.select_item()
