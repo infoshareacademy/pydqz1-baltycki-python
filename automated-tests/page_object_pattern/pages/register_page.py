@@ -1,56 +1,77 @@
-import time
-import pytest
+from ..pages.locators import CommonPageLocators as Locators
 
-from page_object_pattern.pages.base_page import BasePage
+from page_object_pattern.Helpers.helpers import Helpers
 
 
-class RegisterPage(BasePage):
+class RegisterPage(Helpers):
 
-    def __init__(self, driver8):
-        super(RegisterPage, self).__init__(driver8) #wywołanie konstruktora klasy bazowej
+    def __init__(self, driver):
+        super(RegisterPage, self).__init__(driver) #wywołanie konstruktora klasy bazowej
 
     def get_navigation_bar_sign_in(self):
-        return self.driver.find_element_by_class_name('header_user_info')
+        return self.driver.find_element(*Locators.LOGIN_BUTTON)
 
-    def get_register_page_email_create_input(self):
-        return self.driver.find_element_by_id('email_create')
+    def get_email_create_input(self):
+        return self.driver.find_element(*Locators.EMAIL_CREATE_INPUT)
 
-    def get_register_page_create_an_account_button(self):
-        return self.driver.find_element_by_id('SubmitCreate')
+    def get_create_an_account_button(self):
+        return self.driver.find_element(*Locators.CREATE_ACCOUNT_BUTTON)
 
-    def get_register_page_first_name_input(self):
-        return self.driver.find_element_by_id('customer_firstname')
+    def get_first_name_input(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_FIRST_NAME_INPUT)
 
-    def get_register_page_last_name_input(self):
-        return self.driver.find_element_by_id('customer_lastname')
+    def get_last_name_input(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_LAST_NAME_INPUT)
 
-    def get_register_page_email_input(self):
-        return self.driver.find_element_by_id('email')
+    # def get_email_input(self):
+    #     return self.driver.find_element_by_id('email')
 
-    def get_register_page_password_input(self):
-        return self.driver.find_element_by_id('passwd')
+    def get_password_input(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_PASSWORD_INPUT)
 
-    def get_register_page_address_first_name_input(self):
-        return self.driver.find_element_by_id('firstname')
+    # def get_address_first_name_input(self):
+    #     return self.driver.find_element_by_id('firstname')
+    #
+    # def get_address_last_name_input(self):
+    #     return self.driver.find_element_by_id('lastname')
 
-    def get_register_page_address_last_name_input(self):
-        return self.driver.find_element_by_id('lastname')
+    def get_address_input(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_ADDRESS_INPUT)
 
-    def get_register_page_address_input(self):
-        return self.driver.find_element_by_id('address1')
+    def get_address_city(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_CITY_INPUT)
 
-    def get_register_page_address_city(self):
-        return self.driver.find_element_by_id('city')
+    def get_state(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_STATE_DROPBOX)
 
-    def get_register_page_state(self):
-        return self.driver.find_element_by_id('id_state')
+    def get_postal_code(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_POST_CODE)
 
-    def get_register_page_postal_code(self):
-        return self.driver.find_element_by_id('postcode')
+    def get_get_mobile_phone(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_MOBILE_PHONE_INPUT)
 
-    def get_get_register_page_mobile_phone(self):
-        return self.driver.find_element_by_id('phone_mobile')
+    def get_register_button(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_REGISTER_BUTTON)
 
-    def get_register_page_register_button(self):
-        return self.driver.find_element_by_id('submitAccount')
+    def get_alert_account_text(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_ALERT).text
+
+    def get_info_account_text(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_INFO).text
+
+    def get_customer_button_name_text(self):
+        return self.driver.find_element(*Locators.CUSTOMER_NAME_ACC_BUTTON).text
+
+    def get_email_input(self):
+        return self.driver.find_element(*Locators.EMAIL_INPUT)
+
+    def get_alert_account_all_text(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_ALERT_ALL).text
+
+    def get_alert_account_password(self):
+        return self.driver.find_element(*Locators.CREATE_ACC_ALERT_PASSWORD).text
+
+    def get_navigation_bar_sign_out_text(self):
+        return self.driver.find_element(*Locators.LOGOUT_BUTTON).text
+
 

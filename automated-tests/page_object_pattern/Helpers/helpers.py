@@ -2,7 +2,7 @@ import time
 import pytest
 
 
-class BasePage:
+class Helpers:
 
     def __init__(self, driver7):
         self.driver = driver7
