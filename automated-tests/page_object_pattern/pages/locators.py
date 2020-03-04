@@ -24,12 +24,15 @@ class CommonPageLocators:
     PRODUCT_COLOR_BLUE = (By.CSS_SELECTOR, 'a[name="Blue"]')
     PRODUCT_COLOR_ORANGE = (By.CSS_SELECTOR, 'a[name="Orange"]')
     PRODUCT_COLOR_WHITE = (By.CSS_SELECTOR, 'a[name="White"]')
+    PRODUCT_H1 = (By.CSS_SELECTOR, 'h1')
+    PRODUCT_PRICE = (By.CSS_SELECTOR, '#our_price_display')
     CART_LAYER_PROCEED_BUTTON = (By.CSS_SELECTOR, 'a[title="Proceed to checkout"]')
     CART_LAYER_CONTINUE_BUTTON = (By.CSS_SELECTOR, '.continue')
     CART_LAYER_TOTAL_PRODUCTS = (By.CSS_SELECTOR, '.ajax_block_products_total')
     HOVER_ADD_TO_CART_BUTTON_BLOUSE = (By.CSS_SELECTOR, '#homefeatured a[data-id-product="2"]')
-    PRODUCT_HOVER_MORE_BUTTON = (By.CSS_SELECTOR, '.button-container \
-    a[href="http://automationpractice.com/index.php?id_product=5&controller=product"]')
+    HOVER_ADD_TO_CART_BUTTON_FADED_TSHIRTS = (By.CSS_SELECTOR, '#homefeatured a[data-id-product="1"]')
+    PRODUCT_HOVER_MORE_BUTTON_FADED_TSHIRTS = (By.CSS_SELECTOR, '.button-container \
+    a[href="http://automationpractice.com/index.php?id_product=1&controller=product"]')
     MENU_WOMEN = (By.CSS_SELECTOR, 'a[title="Women"]')
     MENU_WOMEN_DRESSES = (By.CSS_SELECTOR, '.submenu-container a[title="Dresses"]')
     QUANTITY_INPUT = (By.CSS_SELECTOR, '#quantity_wanted')
