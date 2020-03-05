@@ -41,7 +41,7 @@ class CommonPageLocators:
     PASSWORD_INPUT = (By.CSS_SELECTOR, '#passwd')
     SIGN_IN_BUTTON = (By.CSS_SELECTOR, '#SubmitLogin')
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, '#SubmitCreate')
-    PROCEED_TO_CHECKOUT_BUTTON = (By.CSS_SELECTOR, '.cart_navigation button[type="submit"]')
+    PROCEED_TO_CHECKOUT_BUTTON = (By.CSS_SELECTOR, '.cart_navigation span')
     TERMS_CHECK_BOX = (By.CSS_SELECTOR, 'label[for="cgv"]')
     PAY_BY_BANK_WIRE = (By.CSS_SELECTOR, '.bankwire')
     PAY_BY_CHECK = (By.CSS_SELECTOR, '.cheque')
@@ -60,3 +60,9 @@ class CommonPageLocators:
     SEARCH_COUNTER = (By.CSS_SELECTOR, '.heading-counter')
     SEARCH_ALERT = (By.CSS_SELECTOR, '.alert-warning')
     SEARCH_PRODUCT = (By.CSS_SELECTOR, 'div.product-container')
+    CART_PRODUCT_NAME = (By.CSS_SELECTOR, '.cart_description .product-name')
+    CART_PRODUCT_COLOR_SIZE = (By.CSS_SELECTOR, '.cart_description small a')
+    CART_PRODUCT_UNIT_PRICE = (By.CSS_SELECTOR, '.cart_unit .price span')
+    CART_TOTAL_SHIPPING = (By.CSS_SELECTOR, '#total_shipping')
+    CART_TOTAL_COST = (By.CSS_SELECTOR, '#total_price')
+

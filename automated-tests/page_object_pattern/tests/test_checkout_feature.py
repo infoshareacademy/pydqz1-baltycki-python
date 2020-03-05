@@ -2,21 +2,30 @@ import pytest
 import allure
 
 
-@allure.description('Testing search feature')
+@allure.description('Testing Checkout Feature')
 @pytest.mark.usefixtures('setup')
 class TestCheckoutFeature:
 
     def test_checkout_2_items_pay_by_bank_wire(self, setup):
         product_name = 'Faded Short Sleeve T-shirts'
         product_price = '$16.51'
+        shipping_cost = '$2.00'
         get_h1, get_price, get_quantity = self.checkout_feature.click_on_faded_tshirt()
         assert product_name in self.driver.title, 'Page title must contain ' + product_name
         assert product_name == get_h1, 'H1 must contain ' + product_name
         assert product_price == get_price, 'Price must be ' + product_price
         assert '1' == get_quantity, 'Default quantity must be ' + '1'
-        get_heading_counter = self.checkout_feature.add_to_cart_size_l(2)
+        get_heading_counter, get_product_name, get_product_size, get_product_unit_price, get_cart_shipping_cost, \
+            get_cart_total_cost = self.checkout_feature.add_to_cart_size_l(2)
         assert '2 Products' in get_heading_counter, 'Heading counter must contain 2 Products'
-        assert product_name in self.driver.page_source
+        assert product_name == get_product_name, 'Product name must be ' + product_name
+        assert 'Size : L' in get_product_size, 'Product size must be L'
+        assert product_price == get_product_unit_price, 'Product unit price must be ' + product_price
+        assert shipping_cost == get_cart_shipping_cost, 'Total shipping cost must be ' + shipping_cost
+        assert '$35.02' == get_cart_total_cost, 'Cart total cost must be $35.02'
+        self.checkout_feature.proceed_to_checkout_registered_user('varihig924@era7mail.com', '12345', 'check')
+        assert 'You have chosen to pay by check.' in self.driver.page_source, 'Page title must be Order - My Store'
+
 
     def test_search_bar_is_displayed(self, setup):
         assert self.searching_produtcs.search_bar_is_displayed() is True, 'Search bar is not displayed'

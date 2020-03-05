@@ -27,4 +27,22 @@ class CheckoutFeature:
         self.driver.find_element(*Locators.ADD_TO_CART_BUTTON).click()
         self.driver.find_element(*Locators.CART_LAYER_PROCEED_BUTTON).click()
         heading_counter = self.driver.find_element(*Locators.SEARCH_COUNTER).text
-        return heading_counter
+        product_name = self.driver.find_element(*Locators.CART_PRODUCT_NAME).text
+        product_size = self.driver.find_element(*Locators.CART_PRODUCT_COLOR_SIZE).text
+        product_unit_price = self.driver.find_element(*Locators.CART_PRODUCT_UNIT_PRICE).text
+        cart_shipping_cost = self.driver.find_element(*Locators.CART_TOTAL_SHIPPING).text
+        cart_total_cost = self.driver.find_element(*Locators.CART_TOTAL_COST).text
+        return heading_counter, product_name, product_size, product_unit_price, cart_shipping_cost, cart_total_cost
+
+    def proceed_to_checkout_registered_user(self, mail, password, payment_option):
+        self.driver.find_element(*Locators.PROCEED_TO_CHECKOUT_BUTTON).click()
+        self.driver.find_element(*Locators.EMAIL_INPUT).send_keys(mail)
+        self.driver.find_element(*Locators.PASSWORD_INPUT).send_keys(password)
+        self.driver.find_element(*Locators.SIGN_IN_BUTTON).click()
+        self.driver.find_element(*Locators.PROCEED_TO_CHECKOUT_BUTTON).click()
+        self.driver.find_element(*Locators.TERMS_CHECK_BOX).click()
+        self.driver.find_element(*Locators.PROCEED_TO_CHECKOUT_BUTTON).click()
+        if payment_option == 'bank wire':
+            self.driver.find_element(*Locators.PAY_BY_BANK_WIRE).click()
+        else:
+            self.driver.find_element(*Locators.PAY_BY_CHECK).click()
