@@ -26,11 +26,10 @@ class TestCheckoutFeature:
         assert shipping_cost == get_cart_shipping_cost, 'Total shipping cost must be ' + shipping_cost
         assert total_cost == get_cart_total_cost, 'Cart total cost must be ' + total_cost
         self.checkout_feature.proceed_to_checkout_registered_user(payment_option)
+        assert 'Order confirmation - My Store' == self.driver.title, 'Page title must be Order - My'
         if payment_option == 'bank wire':
-            assert 'Order confirmation - My Store' == self.driver.title, 'Page title must be Order - My'
             assert 'Please send us a bank wire' in self.driver.page_source, 'Page must contain info about bank wire'
             assert total_cost in self.driver.page_source, 'Page must contain final amount ' + total_cost
         elif payment_option == 'check':
-            assert 'Order confirmation - My Store' == self.driver.title, 'Page title must be Order - My'
             assert 'Your check must include:' in self.driver.page_source, 'Page must contain info about bank wire'
             assert total_cost in self.driver.page_source, 'Page must contain final amount ' + total_cost

@@ -65,4 +65,4 @@ class CommonPageLocators:
     CART_PRODUCT_UNIT_PRICE = (By.CSS_SELECTOR, '.cart_unit .price span')
     CART_TOTAL_SHIPPING = (By.CSS_SELECTOR, '#total_shipping')
     CART_TOTAL_COST = (By.CSS_SELECTOR, '#total_price')
-
+    BACK_TO_ORDERS_BUTTON = (By.CSS_SELECTOR, 'a[title="Back to orders"]')

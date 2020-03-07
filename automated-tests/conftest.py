@@ -11,6 +11,12 @@ from page_object_pattern.pages.checkout_feature import CheckoutFeature
 
 @pytest.fixture()
 def setup(request):
+    # options = webdriver.ChromeOptions()
+    # options.set_capability('browserName', 'chrome')
+    # options.add_argument('headless')
+    # options.add_argument('start-maximized')
+    # driver = webdriver.Remote('http://localhost:4444/wd/hub', options=options)
+    # options.add_argument("--window-size=2000,1000")
     driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.maximize_window()
     driver.implicitly_wait(10)
