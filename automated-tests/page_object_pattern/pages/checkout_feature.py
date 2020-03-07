@@ -10,7 +10,7 @@ class CheckoutFeature:
     def __init__(self, driver):
         self.driver = driver
 
-    # @allure.step('Looking for search bar')
+    @allure.step('On main page click on Faded tshirts')
     def click_on_faded_tshirt(self):
         element = self.driver.find_element(*Locators.PRODUCT_FADED_TSHIRTS)
         ActionChains(self.driver).move_to_element(element).perform()
@@ -20,6 +20,7 @@ class CheckoutFeature:
         product_quantity = self.driver.find_element(*Locators.QUANTITY_INPUT).get_attribute('value')
         return product_h1, product_price, product_quantity
 
+    @allure.step('Add to cart Faded tshirts size L quantity 2')
     def add_to_cart_size_l(self, quantity):
         self.driver.find_element(*Locators.QUANTITY_INPUT).clear()
         self.driver.find_element(*Locators.QUANTITY_INPUT).send_keys(quantity)
@@ -34,15 +35,17 @@ class CheckoutFeature:
         cart_total_cost = self.driver.find_element(*Locators.CART_TOTAL_COST).text
         return heading_counter, product_name, product_size, product_unit_price, cart_shipping_cost, cart_total_cost
 
-    def proceed_to_checkout_registered_user(self, mail, password, payment_option):
+    @allure.step('Proceed to checkout as registered user pay by {}')
+    def proceed_to_checkout_registered_user(self, payment_option):
         self.driver.find_element(*Locators.PROCEED_TO_CHECKOUT_BUTTON).click()
-        self.driver.find_element(*Locators.EMAIL_INPUT).send_keys(mail)
-        self.driver.find_element(*Locators.PASSWORD_INPUT).send_keys(password)
+        self.driver.find_element(*Locators.EMAIL_INPUT).send_keys('varihig924@era7mail.com')
+        self.driver.find_element(*Locators.PASSWORD_INPUT).send_keys('12345')
         self.driver.find_element(*Locators.SIGN_IN_BUTTON).click()
         self.driver.find_element(*Locators.PROCEED_TO_CHECKOUT_BUTTON).click()
         self.driver.find_element(*Locators.TERMS_CHECK_BOX).click()
         self.driver.find_element(*Locators.PROCEED_TO_CHECKOUT_BUTTON).click()
         if payment_option == 'bank wire':
             self.driver.find_element(*Locators.PAY_BY_BANK_WIRE).click()
-        else:
+        elif payment_option == 'check':
             self.driver.find_element(*Locators.PAY_BY_CHECK).click()
+        self.driver.find_element(*Locators.PROCEED_TO_CHECKOUT_BUTTON).click()
