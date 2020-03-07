@@ -6,7 +6,7 @@ import allure
 @pytest.mark.usefixtures('setup')
 class TestCheckoutFeature:
     @pytest.mark.parametrize('payment_option', ['bank wire', 'check'])
-    @allure.title('Checkout 2 items paid by bank and then paid by check')
+    @allure.title('Checkout Product')
     def test_checkout_2_items(self, setup, payment_option):
         product_name = 'Faded Short Sleeve T-shirts'
         product_price = '$16.51'

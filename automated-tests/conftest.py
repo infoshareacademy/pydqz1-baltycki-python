@@ -8,6 +8,7 @@ from page_object_pattern.pages.shopping_cart import ShoppingCart
 from page_object_pattern.pages.searching_products import SearchingProducts
 from page_object_pattern.pages.checkout_feature import CheckoutFeature
 
+
 @pytest.fixture()
 def setup(request):
     driver = webdriver.Chrome(ChromeDriverManager().install())

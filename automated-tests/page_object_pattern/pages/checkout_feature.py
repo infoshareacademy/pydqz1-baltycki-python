@@ -35,7 +35,7 @@ class CheckoutFeature:
         cart_total_cost = self.driver.find_element(*Locators.CART_TOTAL_COST).text
         return heading_counter, product_name, product_size, product_unit_price, cart_shipping_cost, cart_total_cost
 
-    @allure.step('Proceed to checkout as registered user pay by {}')
+    @allure.step('Proceed to checkout as registered user pay by {1}')
     def proceed_to_checkout_registered_user(self, payment_option):
         self.driver.find_element(*Locators.PROCEED_TO_CHECKOUT_BUTTON).click()
         self.driver.find_element(*Locators.EMAIL_INPUT).send_keys('varihig924@era7mail.com')
