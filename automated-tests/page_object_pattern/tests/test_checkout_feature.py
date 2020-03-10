@@ -5,8 +5,18 @@ import allure
 @allure.description('Testing Checkout Feature')
 @pytest.mark.usefixtures('setup')
 class TestCheckoutFeature:
-    @pytest.mark.parametrize('payment_option', ['bank wire', 'check'])
+    @allure.title('Try to place order with unchecked Terms of Service checkbox')
+    @pytest.mark.parametrize('mail, password', [('varihig924@era7mail.com', '12345')])
+    def test_terms_checkbox(self, setup, mail, password):
+        notify_text = 'You must agree to the terms of service before continuing.'
+        self.checkout_feature.add_one_blouse_to_cart()
+        self.checkout_feature.login_as_registered_user(mail, password)
+        get_notify_is_displayed, get_notify_text = self.checkout_feature.proceed_to_shipping_options()
+        assert True == get_notify_is_displayed, 'Notify must be displayed'
+        assert notify_text == get_notify_text, 'Notify text must be ' + notify_text
+
     @allure.title('Checkout Product')
+    @pytest.mark.parametrize('payment_option', ['bank wire', 'check'])
     def test_checkout_2_items(self, setup, payment_option):
         product_name = 'Faded Short Sleeve T-shirts'
         product_price = '$16.51'
@@ -18,7 +28,7 @@ class TestCheckoutFeature:
         assert product_price == get_price, 'Price must be ' + product_price
         assert '1' == get_quantity, 'Default quantity must be ' + '1'
         get_heading_counter, get_product_name, get_product_size, get_product_unit_price, get_cart_shipping_cost, \
-            get_cart_total_cost = self.checkout_feature.add_to_cart_size_l(2)
+        get_cart_total_cost = self.checkout_feature.add_to_cart_size_l(2)
         assert '2 Products' in get_heading_counter, 'Heading counter must contain 2 Products'
         assert product_name == get_product_name, 'Product name must be ' + product_name
         assert 'Size : L' in get_product_size, 'Product size must be L'

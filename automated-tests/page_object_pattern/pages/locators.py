@@ -66,3 +66,4 @@ class CommonPageLocators:
     CART_TOTAL_SHIPPING = (By.CSS_SELECTOR, '#total_shipping')
     CART_TOTAL_COST = (By.CSS_SELECTOR, '#total_price')
     BACK_TO_ORDERS_BUTTON = (By.CSS_SELECTOR, 'a[title="Back to orders"]')
+    FANCYBOX_NOTIFY = (By.CSS_SELECTOR, '.fancybox-error')

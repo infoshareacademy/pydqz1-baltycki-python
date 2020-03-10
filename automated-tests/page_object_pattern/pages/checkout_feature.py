@@ -10,6 +10,13 @@ class CheckoutFeature:
     def __init__(self, driver):
         self.driver = driver
 
+    @allure.step('On main page click on Blouse - add 1 to cart')
+    def add_one_blouse_to_cart(self):
+        element = self.driver.find_element(*Locators.PRODUCT_BLOUSE)
+        ActionChains(self.driver).move_to_element(element).perform()
+        self.driver.find_element(*Locators.HOVER_ADD_TO_CART_BUTTON_BLOUSE).click()
+        self.driver.find_element(*Locators.CART_LAYER_PROCEED_BUTTON).click()
+
     @allure.step('On main page click on Faded tshirts')
     def click_on_faded_tshirt(self):
         element = self.driver.find_element(*Locators.PRODUCT_FADED_TSHIRTS)
@@ -19,6 +26,20 @@ class CheckoutFeature:
         product_price = self.driver.find_element(*Locators.PRODUCT_PRICE).text
         product_quantity = self.driver.find_element(*Locators.QUANTITY_INPUT).get_attribute('value')
         return product_h1, product_price, product_quantity
+
+    @allure.step('Login as registered user')
+    def login_as_registered_user(self, mail, password):
+        self.driver.find_element(*Locators.PROCEED_TO_CHECKOUT_BUTTON).click()
+        self.driver.find_element(*Locators.EMAIL_INPUT).send_keys(mail)
+        self.driver.find_element(*Locators.PASSWORD_INPUT).send_keys(password)
+        self.driver.find_element(*Locators.SIGN_IN_BUTTON).click()
+
+    @allure.step('Proceed to shipping options')
+    def proceed_to_shipping_options(self):
+        for click in range(2):
+            self.driver.find_element(*Locators.PROCEED_TO_CHECKOUT_BUTTON).click()
+        notify = self.driver.find_element(*Locators.FANCYBOX_NOTIFY)
+        return notify.is_displayed(), notify.text
 
     @allure.step('Add to cart Faded tshirts size L quantity 2')
     def add_to_cart_size_l(self, quantity):
