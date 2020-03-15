@@ -4,6 +4,7 @@ from assertpy import assert_that
 
 
 @pytest.mark.usefixtures('setup')
+@allure.parent_suite('Shopping Cart')
 @allure.description("Tests validating proper shopping cart behaviour")
 class TestShoppingCart:
 
