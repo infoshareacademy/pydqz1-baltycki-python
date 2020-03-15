@@ -4,6 +4,7 @@ import re
 import sys
 import warnings
 from contextlib import contextmanager
+from typing import Generator
 
 import pytest
 from _pytest.fixtures import fixture
@@ -108,7 +109,7 @@ class MonkeyPatch:
         self._savesyspath = None
 
     @contextmanager
-    def context(self):
+    def context(self) -> Generator["MonkeyPatch", None, None]:
         """
         Context manager that returns a new :class:`MonkeyPatch` object which
         undoes any patching done inside the ``with`` block upon exit:
@@ -261,7 +262,7 @@ class MonkeyPatch:
         # A call to syspathinsert() usually means that the caller wants to
         # import some dynamically created files, thus with python3 we
         # invalidate its import caches.
-        # This is especially important when any namespace package is in used,
+        # This is especially important when any namespace package is in use,
         # since then the mtime based FileFinder cache (that gets created in
         # this case already) gets not invalidated when writing the new files
         # quickly afterwards.

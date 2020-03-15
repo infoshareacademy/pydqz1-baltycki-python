@@ -1,3 +1,4 @@
+assertpy
 pytest
 selenium
 Package    Version

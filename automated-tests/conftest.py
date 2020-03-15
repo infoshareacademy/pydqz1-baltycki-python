@@ -4,11 +4,15 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.wait import WebDriverWait
 from page_object_pattern.pages.shopping_cart import ShoppingCart
+from selenium.webdriver.chrome.options import Options
 
 
 @pytest.fixture()
 def setup(request):
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    options = Options()
+    options.headless = True
+    driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
+    # driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get('http://automationpractice.com/index.php')
     driver.maximize_window()
     driver.implicitly_wait(10)

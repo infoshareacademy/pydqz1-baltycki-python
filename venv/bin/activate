@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/mateusz/pydqz1-baltycki-python/venv"
+VIRTUAL_ENV="/home/azg/Documents/Projekt_grupowy/pydqz1-baltycki-python/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
