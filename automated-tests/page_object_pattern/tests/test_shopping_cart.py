@@ -17,7 +17,7 @@ class TestShoppingCart:
 
     @allure.title('First launch, basket empty - logged in')
     def test_shopping_cart_empty_logged_in(self, setup):
-        self.shoppingCart.log_in('mobiy43403@cityroyal.org', 'qwerty123')
+        self.shoppingCart.log_in()
         self.shoppingCart.go_back_to_main_page()
         # check the contents of the cart visible on the main page - it should be empty
         assert_that(self.shoppingCart.main_page_cart_status()).contains('(empty)')
@@ -27,7 +27,7 @@ class TestShoppingCart:
 
     @allure.title('Add item to shopping cart from main menu - logged in')
     def test_add_to_shopping_cart_logged_in(self, setup):
-        self.shoppingCart.log_in('mobiy43403@cityroyal.org', 'qwerty123')
+        self.shoppingCart.log_in()
         self.shoppingCart.go_back_to_main_page()
         self.shoppingCart.select_item()
         self.shoppingCart.add_to_cart()
@@ -53,7 +53,7 @@ class TestShoppingCart:
 
     @allure.title('Remove item from the shopping cart in main menu - logged in')
     def test_remove_item_from_shopping_cart_logged_in(self, setup):
-        self.shoppingCart.log_in('mobiy43403@cityroyal.org', 'qwerty123')
+        self.shoppingCart.log_in()
         self.shoppingCart.go_back_to_main_page()
         self.shoppingCart.select_item()
         self.shoppingCart.add_to_cart()
@@ -76,7 +76,7 @@ class TestShoppingCart:
 
     @allure.title('Add item to the shopping cart and proceed to checkout - logged in')
     def test_proceed_to_checkout_logged_in(self, setup):
-        self.shoppingCart.log_in('mobiy43403@cityroyal.org', 'qwerty123')
+        self.shoppingCart.log_in()
         self.shoppingCart.go_back_to_main_page()
         self.shoppingCart.select_item()
         self.shoppingCart.add_to_cart()
@@ -99,7 +99,7 @@ class TestShoppingCart:
 
     @allure.title('Add item to the shopping cart in details view - logged in')
     def test_details_view_logged_in(self, setup):
-        self.shoppingCart.log_in('mobiy43403@cityroyal.org', 'qwerty123')
+        self.shoppingCart.log_in()
         self.shoppingCart.go_back_to_main_page()
         self.shoppingCart.select_item()
         self.shoppingCart.move_to_details_view()

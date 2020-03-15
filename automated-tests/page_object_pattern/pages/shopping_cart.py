@@ -1,6 +1,8 @@
+import json
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import Select
 
+json_file_path = '/home/azg/Documents/Projekt_grupowy/pydqz1-baltycki-python/automated-tests/helpers/user.json'
 
 class ShoppingCart:
     def __init__(self, driver):
@@ -59,10 +61,12 @@ class ShoppingCart:
     def add_to_cart(self):
         self.driver.find_element_by_css_selector(self.add_to_cart_btn_css).click()
 
-    def log_in(self, user, password):
+    def log_in(self):
+        with open(json_file_path) as f:
+            data = json.load(f)
         self.driver.find_element_by_css_selector(self.sign_in_button_css).click()
-        self.driver.find_element_by_id(self.email_field_css).send_keys(user)
-        self.driver.find_element_by_id(self.password_field_css).send_keys(password)
+        self.driver.find_element_by_id(self.email_field_css).send_keys(data['Id'])
+        self.driver.find_element_by_id(self.password_field_css).send_keys(data['Password'])
         self.driver.find_element_by_css_selector(self.sign_in_btn_css).click()
 
     def go_back_to_main_page(self):
