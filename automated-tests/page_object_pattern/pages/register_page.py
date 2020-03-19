@@ -1,6 +1,10 @@
+from selenium.webdriver.support.select import Select
+
 from ..pages.locators import CommonPageLocators as Locators
 
 from page_object_pattern.Helpers.helpers import Helpers
+import allure
+from page_object_pattern.Helpers.registration_data import *
 
 
 class RegisterPage(Helpers):
@@ -74,4 +78,18 @@ class RegisterPage(Helpers):
     def get_navigation_bar_sign_out_text(self):
         return self.driver.find_element(*Locators.LOGOUT_BUTTON).text
 
+    def first_step(self, email):
+        self.get_email_create_input().send_keys(email)
+        self.get_create_an_account_button().click()
+
+    def last_step(self, personal_data):
+        self.get_address_city().send_keys(personal_data.city_name) # must be first - bug?
+        self.get_first_name_input().send_keys(personal_data.first_name_input)
+        self.get_last_name_input().send_keys(personal_data.last_name_input)
+        self.get_password_input().send_keys(personal_data.password_input)
+        self.get_address_input().send_keys(personal_data.city_street + " " + str(random.randint(1, 100)))
+        Select(self.get_state()).select_by_value(personal_data.state_value_input)
+        self.get_postal_code().send_keys(personal_data.city_code_format)
+        self.get_get_mobile_phone().send_keys(personal_data.mobile_phone_input)
+        self.get_register_button().click()
 
