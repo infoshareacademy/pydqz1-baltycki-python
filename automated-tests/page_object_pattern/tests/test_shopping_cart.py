@@ -8,16 +8,8 @@ from assertpy import assert_that
 @allure.description("Tests validating proper shopping cart behaviour")
 class TestShoppingCart:
 
-    @allure.title('First launch, basket empty - not logged')
-    def test_shopping_cart_empty_not_logged(self, setup):
-        # check the contents of the cart visible on the main page - it should be empty
-        assert_that(self.shoppingCart.main_page_cart_status()).contains('(empty)')
-        self.shoppingCart.select_cart()
-        # check that 'Your shopping cart is empty.' alert is displayed when you enter the shopping cart
-        assert_that(self.shoppingCart.check_no_contents()).contains('Your shopping cart is empty.')
-
-    @allure.title('First launch, basket empty - logged in')
-    def test_shopping_cart_empty_logged_in(self, setup):
+    @allure.title('Add item to shopping cart from main menu - logged in')
+    def test_add_to_shopping_cart_logged_in(self, setup):
         self.shoppingCart.log_in()
         self.shoppingCart.go_back_to_main_page()
         # check the contents of the cart visible on the main page - it should be empty
@@ -25,10 +17,6 @@ class TestShoppingCart:
         self.shoppingCart.select_cart()
         # check that 'Your shopping cart is empty.' alert is displayed when you enter the shopping cart
         assert_that(self.shoppingCart.check_no_contents()).contains('Your shopping cart is empty.')
-
-    @allure.title('Add item to shopping cart from main menu - logged in')
-    def test_add_to_shopping_cart_logged_in(self, setup):
-        self.shoppingCart.log_in()
         self.shoppingCart.go_back_to_main_page()
         self.shoppingCart.select_item()
         self.shoppingCart.add_to_cart()
@@ -42,6 +30,12 @@ class TestShoppingCart:
 
     @allure.title('Add item to shopping cart from main menu - not logged')
     def test_add_to_shopping_cart_logged_out(self, setup):
+        # check the contents of the cart visible on the main page - it should be empty
+        assert_that(self.shoppingCart.main_page_cart_status()).contains('(empty)')
+        self.shoppingCart.select_cart()
+        # check that 'Your shopping cart is empty.' alert is displayed when you enter the shopping cart
+        assert_that(self.shoppingCart.check_no_contents()).contains('Your shopping cart is empty.')
+        self.shoppingCart.go_back_to_main_page()
         self.shoppingCart.select_item()
         self.shoppingCart.add_to_cart()
         self.shoppingCart.continue_shopping()
@@ -71,7 +65,7 @@ class TestShoppingCart:
     def test_proceed_to_checkout_logged_out(self, setup):
         self.shoppingCart.select_item()
         self.shoppingCart.add_to_cart()
-        self.shoppingCart.proceed_to_checkout_main_page()
+        self.shoppingCart.proceed_to_checkout_from_main_page()
         # check that 1 item was added to the shopping cart and is displayed in summary
         assert_that(self.shoppingCart.check_item_in_cart_summary()).contains('1 Product')
 
@@ -81,7 +75,7 @@ class TestShoppingCart:
         self.shoppingCart.go_back_to_main_page()
         self.shoppingCart.select_item()
         self.shoppingCart.add_to_cart()
-        self.shoppingCart.proceed_to_checkout_main_page()
+        self.shoppingCart.proceed_to_checkout_from_main_page()
         # check that 1 item was added to the shopping cart and is displayed in summary
         assert_that(self.shoppingCart.check_item_in_cart_summary()).contains('1 Product')
 
@@ -121,7 +115,7 @@ class TestShoppingCart:
         self.shoppingCart.change_color()
         self.shoppingCart.change_size()
         self.shoppingCart.add_to_cart_details_view()
-        self.shoppingCart.proceed_to_checkout_main_page()
+        self.shoppingCart.proceed_to_checkout_from_main_page()
         # check that 2 items were added to the shopping cart and are displayed in summary
         assert_that(self.shoppingCart.check_item_in_cart_summary()).contains('2 Products'),
         # check that selected size is L and color is 'White'

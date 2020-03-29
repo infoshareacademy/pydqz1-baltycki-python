@@ -90,7 +90,7 @@ class ShoppingCart:
     def remove_from_cart_main_page(self):
         self.driver.find_element_by_css_selector(self.remove_from_cart_btn_css).click()
 
-    def proceed_to_checkout_main_page(self):
+    def proceed_to_checkout_from_main_page(self):
         self.driver.find_element_by_css_selector(self.proceed_to_checkout_btn_css).click()
 
     def log_me_out_button_exists(self):

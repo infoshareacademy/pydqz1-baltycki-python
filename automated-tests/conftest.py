@@ -3,7 +3,7 @@ import time
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.wait import WebDriverWait
-from page_object_pattern.pages.shopping_cart import ShoppingCart
+from page_object_pattern.pages.shopping_cart_page import ShoppingCart
 from selenium.webdriver.chrome.options import Options
 
 
