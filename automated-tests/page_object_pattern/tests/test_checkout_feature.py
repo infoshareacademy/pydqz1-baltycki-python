@@ -9,7 +9,8 @@ from assertpy import assert_that
 class TestCheckoutFeature:
     @allure.title('Can\'t checkout with unchecked Terms of Service checkbox')
     @allure.description_html("""<h2>Customer must not checkout when Terms of Service checkbox is unchecked</h2>""")
-    @pytest.mark.parametrize('mail, password', [('varihig924@era7mail.com', '12345')])
+    @pytest.mark.parametrize('mail, password', [('varihig924@era7mail.com', '12345'),
+                                                ('varihig924@era7mail.com', '1234')])
     def test_terms_checkbox(self, setup, mail, password):
         notify_text = 'You must agree to the terms of service before continuing.'
         self.checkout_feature.add_one_blouse_to_cart()
