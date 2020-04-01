@@ -6,6 +6,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from page_object_pattern.pages.checkout_feature import CheckoutFeature
 from page_object_pattern.pages.searching_products import SearchingProducts
+from page_object_pattern.pages.shopping_cart_page import ShoppingCart
 
 
 @pytest.fixture()
@@ -23,6 +24,7 @@ def setup(request):
     request.cls.driver = driver
     request.cls.checkout_feature = CheckoutFeature(driver)
     request.cls.searching_products = SearchingProducts(driver)
+    request.cls.shoppingCart = ShoppingCart(driver)
     before_failed = request.session.testsfailed
     yield
     if request.session.testsfailed != before_failed:
