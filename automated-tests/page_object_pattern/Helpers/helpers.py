@@ -4,8 +4,8 @@ import pytest
 
 class Helpers:
 
-    def __init__(self, driver7):
-        self.driver = driver7
+    def __init__(self, driver):
+        self.driver = driver
 
     @staticmethod
     def slow_typing(element, text):

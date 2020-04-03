@@ -2,7 +2,7 @@ import random
 from page_object_pattern.Helpers.Data_generator import *
 
 
-class RegistrationData:
+class UserData:
     def __init__(self):
         self.email_input = generate_email()
         self.first_name_input = generate_name()
