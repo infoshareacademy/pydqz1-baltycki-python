@@ -1,8 +1,12 @@
+import os.path
 import json
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import Select
 
-json_file_path = '/home/azg/Documents/Projekt_grupowy/pydqz1-baltycki-python/automated-tests/helpers/user.json'
+
+my_path = os.path.abspath(os.path.dirname(__file__))
+json_file_path = os.path.join(my_path, '../Helpers/user.json')
+
 
 class ShoppingCart:
     def __init__(self, driver):
