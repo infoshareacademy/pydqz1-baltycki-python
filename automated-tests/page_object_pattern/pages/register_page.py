@@ -46,5 +46,3 @@ class RegisterPage:
 
     def get_navigation_bar_sign_out_text(self):
         return self.driver.find_element(*Locators.LOGOUT_BUTTON).text
-
-

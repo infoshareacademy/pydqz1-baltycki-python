@@ -34,5 +34,4 @@ This project wouldn't be in the current stage without the hard work of the follo
 We would also like to thank Jacek for his guidance and support.
 
 ## Project status
-The project is still in the development phase. 
-
+The project is still in the development phase.
