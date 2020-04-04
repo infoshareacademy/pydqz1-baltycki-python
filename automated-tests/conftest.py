@@ -4,6 +4,8 @@ from allure_commons.types import AttachmentType
 from time import sleep
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from page_object_pattern.pages.register_page import RegisterPage
+from page_object_pattern.pages.login_page import LoginPage
 from page_object_pattern.pages.checkout_feature import CheckoutFeature
 from page_object_pattern.pages.searching_products import SearchingProducts
 from page_object_pattern.pages.shopping_cart_page import ShoppingCart
@@ -16,6 +18,8 @@ def setup(request):
     driver.implicitly_wait(10)
     driver.get('http://automationpractice.com/index.php')
     request.cls.driver = driver
+    request.cls.register_page = RegisterPage(driver)
+    request.cls.login_page = LoginPage(driver)
     request.cls.checkout_feature = CheckoutFeature(driver)
     request.cls.searching_products = SearchingProducts(driver)
     request.cls.shoppingCart = ShoppingCart(driver)
