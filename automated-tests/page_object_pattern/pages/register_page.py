@@ -1,4 +1,4 @@
-
+import random
 from selenium.webdriver.support.select import Select
 from ..pages.locators import CommonPageLocators as Locators
 from page_object_pattern.Helpers.user_data import *

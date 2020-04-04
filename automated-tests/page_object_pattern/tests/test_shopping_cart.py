@@ -7,7 +7,7 @@ from assertpy import assert_that
 @allure.parent_suite('Shopping Cart')
 @allure.description("Tests validating proper shopping cart behaviour")
 class TestShoppingCart:
-
+    @pytest.mark.skip(reason="Problem with the test javascript error: Failed to execute 'elementsFromPoint'")
     @allure.title('Add item to shopping cart from main menu - logged in')
     def test_add_to_shopping_cart_logged_in(self, setup):
         self.shoppingCart.log_in()
