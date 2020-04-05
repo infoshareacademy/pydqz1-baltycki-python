@@ -29,7 +29,8 @@ class TestSearchingProducts:
     @allure.title('Enter dress query to search bar')
     @allure.description_html("""<h2>Page should display at least one product</h2>""")
     def test_search_dress_query(self, desktop_1366_768):
-        assert_that(self.searching_products.search_bar_is_displayed()).is_true()
-        assert_that(len(self.searching_products.list_of_products())).is_greater_than(0)
-        assert_that(self.searching_products.enter_query_to_search_bar('dress')).contains('7 result')
-        assert_that(self.driver.title).is_equal_to('Search - My Store')
+        # assert_that(self.searching_products.search_bar_is_displayed()).is_true()
+        # assert_that(len(self.searching_products.list_of_products())).is_greater_than(0)
+        # assert_that(self.searching_products.enter_query_to_search_bar('dress')).contains('7 result')
+        # assert_that(self.driver.title).is_equal_to('Search - My Store')
+        assert False
