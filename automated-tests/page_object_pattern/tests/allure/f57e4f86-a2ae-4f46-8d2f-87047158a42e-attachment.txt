@@ -1,0 +1,2 @@
+Trying to download new driver from http://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip
+Unpack archive /home/mateusz/.wdm/drivers/chromedriver/80.0.3987.106/linux64/chromedriver.zip
