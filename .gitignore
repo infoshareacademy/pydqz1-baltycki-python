@@ -1,7 +1,3 @@
-# Allure
-
-allure-reports/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -139,4 +135,4 @@ dmypy.json
 .pytype/
 
 #All the settings files in the .idea directory should be put under version control except workspace.xml, which stores your local preferences. The workspace.xml file should be marked as ignored by VCS.
-workspace.xml
+.idea
