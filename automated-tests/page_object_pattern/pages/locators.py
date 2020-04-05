@@ -24,12 +24,15 @@ class CommonPageLocators:
     PRODUCT_COLOR_BLUE = (By.CSS_SELECTOR, 'a[name="Blue"]')
     PRODUCT_COLOR_ORANGE = (By.CSS_SELECTOR, 'a[name="Orange"]')
     PRODUCT_COLOR_WHITE = (By.CSS_SELECTOR, 'a[name="White"]')
+    PRODUCT_H1 = (By.CSS_SELECTOR, 'h1')
+    PRODUCT_PRICE = (By.CSS_SELECTOR, '#our_price_display')
     CART_LAYER_PROCEED_BUTTON = (By.CSS_SELECTOR, 'a[title="Proceed to checkout"]')
     CART_LAYER_CONTINUE_BUTTON = (By.CSS_SELECTOR, '.continue')
     CART_LAYER_TOTAL_PRODUCTS = (By.CSS_SELECTOR, '.ajax_block_products_total')
     HOVER_ADD_TO_CART_BUTTON_BLOUSE = (By.CSS_SELECTOR, '#homefeatured a[data-id-product="2"]')
-    PRODUCT_HOVER_MORE_BUTTON = (By.CSS_SELECTOR, '.button-container \
-a[href="http://automationpractice.com/index.php?id_product=5&controller=product"]')
+    HOVER_ADD_TO_CART_BUTTON_FADED_TSHIRTS = (By.CSS_SELECTOR, '#homefeatured a[data-id-product="1"]')
+    PRODUCT_HOVER_MORE_BUTTON_FADED_TSHIRTS = (By.CSS_SELECTOR, '.button-container \
+    a[href="http://automationpractice.com/index.php?id_product=1&controller=product"]')
     MENU_WOMEN = (By.CSS_SELECTOR, 'a[title="Women"]')
     MENU_WOMEN_DRESSES = (By.CSS_SELECTOR, '.submenu-container a[title="Dresses"]')
     QUANTITY_INPUT = (By.CSS_SELECTOR, '#quantity_wanted')
@@ -38,7 +41,7 @@ a[href="http://automationpractice.com/index.php?id_product=5&controller=product"
     PASSWORD_INPUT = (By.CSS_SELECTOR, '#passwd')
     SIGN_IN_BUTTON = (By.CSS_SELECTOR, '#SubmitLogin')
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, '#SubmitCreate')
-    PROCEED_TO_CHECKOUT_BUTTON = (By.CSS_SELECTOR, '.cart_navigation button[type="submit"]')
+    PROCEED_TO_CHECKOUT_BUTTON = (By.CSS_SELECTOR, '.cart_navigation span')
     TERMS_CHECK_BOX = (By.CSS_SELECTOR, 'label[for="cgv"]')
     PAY_BY_BANK_WIRE = (By.CSS_SELECTOR, '.bankwire')
     PAY_BY_CHECK = (By.CSS_SELECTOR, '.cheque')
@@ -60,6 +63,13 @@ a[href="http://automationpractice.com/index.php?id_product=5&controller=product"
     CREATE_ACC_ALERT_ALL = (By.CSS_SELECTOR, '#center_column > div > p')
     CREATE_ACC_ALERT_PASSWORD = (By.CSS_SELECTOR, '#center_column > div')
     LOGOUT_BUTTON = (By.XPATH, '//*[@id="header"]/div[2]/div/div/nav/div[2]/a')
-
-
-
+    SEARCH_COUNTER = (By.CSS_SELECTOR, '.heading-counter')
+    SEARCH_ALERT = (By.CSS_SELECTOR, '.alert-warning')
+    SEARCH_PRODUCT = (By.CSS_SELECTOR, 'div.product-container')
+    CART_PRODUCT_NAME = (By.CSS_SELECTOR, '.cart_description .product-name')
+    CART_PRODUCT_COLOR_SIZE = (By.CSS_SELECTOR, '.cart_description small a')
+    CART_PRODUCT_UNIT_PRICE = (By.CSS_SELECTOR, '.cart_unit .price span')
+    CART_TOTAL_SHIPPING = (By.CSS_SELECTOR, '#total_shipping')
+    CART_TOTAL_COST = (By.CSS_SELECTOR, '#total_price')
+    BACK_TO_ORDERS_BUTTON = (By.CSS_SELECTOR, 'a[title="Back to orders"]')
+    FANCYBOX_NOTIFY = (By.CSS_SELECTOR, '.fancybox-error')
