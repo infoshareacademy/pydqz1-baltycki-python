@@ -28,6 +28,7 @@ class TestShoppingCart:
         # check that 1 item was added to the shopping cart and is displayed in summary
         assert_that(self.shoppingCart.check_item_in_cart_summary()).contains('1 Product')
 
+    @pytest.mark.skip(reason="Problem with javascript error: Failed to execute 'elementsFromPoint'")
     @allure.title('Add item to shopping cart from main menu - not logged')
     def test_add_to_shopping_cart_logged_out(self, headless_1920_1080):
         # check the contents of the cart visible on the main page - it should be empty
