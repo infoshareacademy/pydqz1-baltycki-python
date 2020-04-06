@@ -1,3 +1,0 @@
-
-Looking for [chromedriver 80.0.3987.106 linux64] driver in cache 
-File found in cache by path [/home/mateusz/.wdm/drivers/chromedriver/80.0.3987.106/linux64/chromedriver]

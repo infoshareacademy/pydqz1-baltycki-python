@@ -1,1 +1,0 @@
-{"uuid": "f4fad038-e7d5-4984-b691-190a95e82e82", "children": ["9178e5d5-db5d-4ccb-8e22-6fca191284ac"], "befores": [{"name": "mobile_360_640", "status": "passed", "start": 1586075492052, "stop": 1586075497213}], "afters": [{"name": "mobile_360_640::0", "status": "passed", "start": 1586075504901, "stop": 1586075506966}], "start": 1586075492052, "stop": 1586075506966}
