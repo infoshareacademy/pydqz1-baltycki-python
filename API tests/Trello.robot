@@ -97,11 +97,3 @@ Collect List Id
 
 *** Comments ***
 
-Update List
-    PUT /1/lists/{id}
-
-Validate Good Status Code
-    [Arguments]         ${resp.status_code}
-    Log                 ${resp.status_code}
-    ${status}           Convert To String       ${resp.status_code}
-    Should Be Equal     ${status}               200
