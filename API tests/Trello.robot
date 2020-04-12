@@ -6,8 +6,8 @@ Suite Setup         Create Trello Session
 
 *** Variables ***
 ${URL}                         https://api.trello.com
-${API_KEY}                     261ef574aa62fc238f14a55559b9692b
-${TOKEN}                       d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f
+${API_KEY}                     1
+${TOKEN}                       2
 
 *** Test Cases ***
 Get All Boards
