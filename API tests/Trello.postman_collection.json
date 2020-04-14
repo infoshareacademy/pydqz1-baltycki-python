@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "c50cbc4c-a5bc-46a3-bf0b-c0b77bf88fb1",
+		"name": "Trello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all boards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get board by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Board",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Board",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "45a0dd7c-2c98-419f-b52a-6fe9c67fc1eb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "dc07508d-a035-4a08-a670-33a0fdd888e1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1374ad0e-e5a9-429d-996f-55f735e05fc6",
+			"key": "api",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "10443e59-8a90-48d6-af97-a26553356b10",
+			"key": "api_key",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "8cc27fc4-17d0-4e0f-affc-784867de32eb",
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "712a08a4-2dee-4b04-ab98-011d097e3646",
+			"key": "board_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "5f78c7e7-fd50-4e87-9ead-a6d99a0b9a55",
+			"key": "list_id",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
