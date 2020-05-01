@@ -11,7 +11,7 @@ ${TOKEN}                       2
 
 *** Test Cases ***
 
-Create Board
+Create Board Request Should Create New Board
     [Tags]                                            Boards
     ${board_name}           Generate Random String    8           [LETTERS][NUMBERS]
     ${resp}                 Post Request              trello      /1/boards/?name=${board_name}&key=${API_KEY}&token=${TOKEN}
@@ -20,20 +20,20 @@ Create Board
     ${existing_board_id}    Collect Board Id          ${resp}
     Set Suite Variable      ${BOARD_ID}               ${existing_board_id}
 
-Get Board With Valid Id
+Get Board Request With Valid Id Should Return Expected Board 
     [Tags]                              Boards
     ${resp}     Get Request             trello              /1/boards/${BOARD_ID}?key=${API_KEY}&token=${TOKEN}
     Request Should Be Successful        ${resp}
     Validate Board Id In The Response   ${resp}             ${BOARD_ID}
 
-Get Board With Invalid Id
+Get Board Request With Inalid Id Should Return "Invalid id" Response
     [Tags]                          Boards
     ${invalid_board_id}             Generate Random String    24           [LETTERS][NUMBERS]
     ${resp}     Get Request         trello          /1/boards/${invalid_board_id}?key=${API_KEY}&token=${TOKEN}
     Validate Bad Status Code        ${resp.status_code}
     Validate "Invalid id" Response  ${resp.content}
 
-Create New List
+Create New List Request Should Create New List On Selected Board
     [Tags]                                            Lists
     ${list_name}            Generate Random String    8           [LETTERS][NUMBERS]
     ${resp}                 Post Request              trello      /1/lists?name=${list_name}&idBoard=${BOARD_ID}&key=${API_KEY}&token=${TOKEN}
@@ -41,7 +41,7 @@ Create New List
     ${existing_list_id}     Collect List Id           ${resp}
     Set Suite Variable      ${LIST_ID}                ${existing_list_id}
 
-Create New List With Invalid Board Id
+Create New List Request With Invalid Board Id Should Return "Invalid value for idBoard" Response 
     [Tags]                                            Lists
     ${list_name}            Generate Random String    8           [LETTERS][NUMBERS]
     ${invalid_board_id}     Generate Random String    24          [LETTERS][NUMBERS]
@@ -49,13 +49,13 @@ Create New List With Invalid Board Id
     Validate Bad Status Code                          ${resp.status_code}
     Validate "Invalid value for idBoard" Response     ${resp.content}
 
-Update List
+Update List Request Should Update List On Selected Board
     [Tags]                                            Lists
     ${new_list_name}        Generate Random String    8           [LETTERS][NUMBERS]
     ${resp}                 Put Request               trello      /1/lists/${LIST_ID}?name=${new_list_name}&key=${API_KEY}&token=${TOKEN}
     Request Should Be Successful                      ${resp}
 
-Update List With Incorrect List Id
+Update List Request With Incorrect List Id Should Return "Invalid id" Response
     [Tags]                                            Lists
     ${new_list_name}        Generate Random String    8           [LETTERS][NUMBERS]
     ${incorect_list_id}     Generate Random String    8           [LETTERS][NUMBERS]
@@ -63,12 +63,12 @@ Update List With Incorrect List Id
     Validate Bad Status Code                          ${resp.status_code}
     Validate "Invalid id" Response                    ${resp.content}
 
-Delete Existing Board
+Delete Existing Board Should Delete Existing Board
     [Tags]                          Boards
     ${resp}     Delete Request      trello            /1/boards/${BOARD_ID}?key=${API_KEY}&token=${TOKEN}
     Request Should Be Successful    ${resp}
 
-Delete Existing Board With Incorrect Id
+Delete Existing Board Request With Incorrect Id Should Return "Invalid id" Response
     [Tags]                              Boards
     ${incorrect_board_id}               Generate Random String    24           [LETTERS][NUMBERS]
     ${resp}                             Delete Request            trello       /1/boards/${incorrect_board_id}?key=${API_KEY}&token=${TOKEN}
