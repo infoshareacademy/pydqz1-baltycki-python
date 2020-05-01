@@ -1,0 +1,543 @@
+{
+	"info": {
+		"_postman_id": "c50cbc4c-a5bc-46a3-bf0b-c0b77bf88fb1",
+		"name": "Trello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "af91a0cc-ea97-4810-a9c4-5f28e602759e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Name: New_test_board returned in the response\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"New_test_board\");",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"board_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/boards/?name=New_test_board&key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "New_test_board"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get board by id - incorrect id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b78ffb62-b6d5-4c2e-9a21-2839488ef7be",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Value returned in the response: invalid id\", function () {",
+							"    pm.response.to.have.body(\"invalid id\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/boards/5eab2b1e96e7d713d25e29?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"5eab2b1e96e7d713d25e29"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get board by id - correct id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb0efde1-1e22-41cb-b407-e4c8505b2726",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var boardid = pm.collectionVariables.get(\"board_id\");",
+							"",
+							"pm.test(\"Value returned in the response: board_id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(boardid);",
+							"});",
+							"",
+							"pm.test(\"Name returned in the response: New_test_board\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"New_test_board\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/boards/{{board_id}}?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{board_id}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new list - incorrect board id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "efa4064a-e6b8-43a3-bc02-e1412a33758a",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Value returned in the response: unauthorized board list requested\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"unauthorized board list requested\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/lists?name=New_list&idBoard=5eab2b1e96e7d713d25e29a8&key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "New_list"
+						},
+						{
+							"key": "idBoard",
+							"value": "5eab2b1e96e7d713d25e29a8"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new list - correct board id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "efa4064a-e6b8-43a3-bc02-e1412a33758a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Name returned in the response: New_list\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"New_list\");",
+							"});",
+							"",
+							"var boardid = pm.collectionVariables.get(\"board_id\");",
+							"",
+							"pm.test(\"Correct Board id value returned in the response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.idBoard).to.eql(boardid);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"list_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/lists?name=New_list&idBoard={{board_id}}&key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "New_list"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{board_id}}"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a list - incorrect list id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4004894-c326-4464-ad6c-a94eaf69a374",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Value returned in the response: model not found\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"model not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/lists/5eab2ed393c86c55f3fdf603?name=New_list_1&key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"5eab2ed393c86c55f3fdf603"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "New_list_1"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a list - correct list id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4004894-c326-4464-ad6c-a94eaf69a374",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Value returned in the response: New_list_1\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"New_list_1\");",
+							"});",
+							"",
+							"var listid = pm.collectionVariables.get(\"list_id\");",
+							"",
+							"pm.test(\"Correct List id value returned in the response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(listid);",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/lists/{{list_id}}?name=New_list_1&key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{list_id}}"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "New_list_1"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Board - incorrect id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "97cea210-635c-46cd-af52-4c3e8466ba57",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});    ",
+							"    ",
+							"pm.test(\"Value returned in the response: invalid id\", function () {",
+							"    pm.response.to.have.body(\"invalid id\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/boards/5eab2b1e96e7d713d25e29?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"5eab2b1e96e7d713d25e29"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Board - correct id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a2fbda8-1023-4efe-b124-0c3303e4ca44",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/boards/{{board_id}}?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{board_id}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "45a0dd7c-2c98-419f-b52a-6fe9c67fc1eb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "dc07508d-a035-4a08-a670-33a0fdd888e1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "273c38ac-f888-44f6-84a3-aa0f90243320",
+			"key": "api",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "687ee716-7553-4720-9aeb-703cc44367ed",
+			"key": "api_key",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "727bb909-b6dd-4b4b-aa9a-d88b88a00c47",
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "a676bbe4-608e-42e0-9387-fcb53484c763",
+			"key": "board_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "4f55e86a-82df-4670-a5dd-bfbfd9fbad49",
+			"key": "list_id",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

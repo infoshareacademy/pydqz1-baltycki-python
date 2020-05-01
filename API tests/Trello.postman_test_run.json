@@ -1,0 +1,363 @@
+{
+	"id": "01a06bcd-edc3-4c0e-8d41-84cd2a7215af",
+	"name": "Trello",
+	"timestamp": "2020-05-01T09:23:15.490Z",
+	"collection_id": "c50cbc4c-a5bc-46a3-bf0b-c0b77bf88fb1",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 20,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "912e79b7-28ee-4588-99d5-5457636f1f81",
+			"name": "Create Board",
+			"url": "https://api.trello.com/1/boards/?name=New_test_board&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 378,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Name: New_test_board returned in the response": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Name: New_test_board returned in the response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				378
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Name: New_test_board returned in the response": true
+				}
+			]
+		},
+		{
+			"id": "15bfea9a-ae01-4cff-ba45-8a55946ae69f",
+			"name": "Get board by id - incorrect id",
+			"url": "https://api.trello.com/1/boards/5eab2b1e96e7d713d25e29?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 172,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Value returned in the response: invalid id": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: invalid id": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				172
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Value returned in the response: invalid id": true
+				}
+			]
+		},
+		{
+			"id": "893b544a-5a95-42a1-b6e3-42aca9f06332",
+			"name": "Get board by id - correct id",
+			"url": "https://api.trello.com/1/boards/5eabea96fa3b9d8bc72fb895?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 168,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Value returned in the response: board_id": true,
+				"Name returned in the response: New_test_board": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: board_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Name returned in the response: New_test_board": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				168
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Value returned in the response: board_id": true,
+					"Name returned in the response: New_test_board": true
+				}
+			]
+		},
+		{
+			"id": "7f03cffe-3704-47d4-bba0-fa261640d094",
+			"name": "Create a new list - incorrect board id",
+			"url": "https://api.trello.com/1/lists?name=New_list&idBoard=5eab2b1e96e7d713d25e29a8&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 158,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Value returned in the response: unauthorized board list requested": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: unauthorized board list requested": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				158
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Value returned in the response: unauthorized board list requested": true
+				}
+			]
+		},
+		{
+			"id": "439be2c9-0d2c-4bbd-a7b9-2900423eaae8",
+			"name": "Create a new list - correct board id",
+			"url": "https://api.trello.com/1/lists?name=New_list&idBoard=5eabea96fa3b9d8bc72fb895&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 322,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Name returned in the response: New_list": true,
+				"Correct Board id value returned in the response": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Name returned in the response: New_list": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Correct Board id value returned in the response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				322
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Name returned in the response: New_list": true,
+					"Correct Board id value returned in the response": true
+				}
+			]
+		},
+		{
+			"id": "2dd37b0b-5e4a-4d98-beaf-5d8ed843abab",
+			"name": "Update a list - incorrect list id",
+			"url": "https://api.trello.com/1/lists/5eab2ed393c86c55f3fdf603?name=New_list_1&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 149,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Value returned in the response: model not found": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: model not found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				149
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Value returned in the response: model not found": true
+				}
+			]
+		},
+		{
+			"id": "e97b2cf6-eacc-4470-bc98-cdee2fa088f3",
+			"name": "Update a list - correct list id",
+			"url": "https://api.trello.com/1/lists/5eabea971a737c826262e9b6?name=New_list_1&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 316,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Value returned in the response: New_list_1": true,
+				"Correct List id value returned in the response": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: New_list_1": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Correct List id value returned in the response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				316
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Value returned in the response: New_list_1": true,
+					"Correct List id value returned in the response": true
+				}
+			]
+		},
+		{
+			"id": "27e1490b-7ba8-4555-a9c8-a386ee5378d7",
+			"name": "Delete Board - incorrect id",
+			"url": "https://api.trello.com/1/boards/5eab2b1e96e7d713d25e29?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 143,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Value returned in the response: invalid id": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: invalid id": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				143
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Value returned in the response: invalid id": true
+				}
+			]
+		},
+		{
+			"id": "6dd2c0a5-db89-40bd-b231-25b5b6aacbf5",
+			"name": "Delete Board - correct id",
+			"url": "https://api.trello.com/1/boards/5eabea96fa3b9d8bc72fb895?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 417,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				417
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2223,
+	"collection": {
+		"requests": [
+			{
+				"id": "912e79b7-28ee-4588-99d5-5457636f1f81",
+				"method": "POST"
+			},
+			{
+				"id": "15bfea9a-ae01-4cff-ba45-8a55946ae69f",
+				"method": "GET"
+			},
+			{
+				"id": "893b544a-5a95-42a1-b6e3-42aca9f06332",
+				"method": "GET"
+			},
+			{
+				"id": "7f03cffe-3704-47d4-bba0-fa261640d094",
+				"method": "POST"
+			},
+			{
+				"id": "439be2c9-0d2c-4bbd-a7b9-2900423eaae8",
+				"method": "POST"
+			},
+			{
+				"id": "2dd37b0b-5e4a-4d98-beaf-5d8ed843abab",
+				"method": "PUT"
+			},
+			{
+				"id": "e97b2cf6-eacc-4470-bc98-cdee2fa088f3",
+				"method": "PUT"
+			},
+			{
+				"id": "27e1490b-7ba8-4555-a9c8-a386ee5378d7",
+				"method": "DELETE"
+			},
+			{
+				"id": "6dd2c0a5-db89-40bd-b231-25b5b6aacbf5",
+				"method": "DELETE"
+			}
+		]
+	}
+}
