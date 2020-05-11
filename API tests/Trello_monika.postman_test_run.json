@@ -1,0 +1,400 @@
+{
+	"id": "ef3b4e17-6314-45ba-82a6-a4d136e65c70",
+	"name": "Trello_postman_collection",
+	"timestamp": "2020-05-11T22:33:17.148Z",
+	"collection_id": "d4631c00-d0e6-4547-aa93-3b04955005e0",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 22,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "14597926-12f1-4b2f-b6a2-4f07b4e87bae",
+			"name": "Create Board",
+			"url": "https://api.trello.com/1/boards/?name=test_board_1_monika&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 278,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Board name: test_board_1_monika returned in the response": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Board name: test_board_1_monika returned in the response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				278
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Board name: test_board_1_monika returned in the response": true
+				}
+			]
+		},
+		{
+			"id": "4a275978-76ab-4fd8-a75c-ac97f6f3b0e0",
+			"name": "Create New List on Board",
+			"url": "https://api.trello.com/1/lists?name=test_list_1_monika&idBoard=5eb9d2ad1e98c401cb85b26a&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 251,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"List name returned in the response: test_list_1_monika": true,
+				"Correct Board id value returned in the response": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"List name returned in the response: test_list_1_monika": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Correct Board id value returned in the response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				251
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"List name returned in the response: test_list_1_monika": true,
+					"Correct Board id value returned in the response": true
+				}
+			]
+		},
+		{
+			"id": "057dae35-27fb-48b2-a127-a30b7ce3710f",
+			"name": "Create New List - invalid board_id",
+			"url": "https://api.trello.com/1/lists?name=test_list_1_monika&idBoard=5eab2b1e96e7d713d25e29&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 132,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Value returned in the response: invalid value for idBoard": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: invalid value for idBoard": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				132
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Value returned in the response: invalid value for idBoard": true
+				}
+			]
+		},
+		{
+			"id": "3959b830-6724-41fd-963f-2d183c27ec19",
+			"name": "Create New Card on List",
+			"url": "https://api.trello.com/1/cards?idList=5eb9d2ad1fe9dd8f26c9f035&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f&name=test_card_1_monika",
+			"time": 406,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Card name returned in the response: test_card_1_monika": true,
+				"Correct List id value returned in the response": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Card name returned in the response: test_card_1_monika": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Correct List id value returned in the response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				406
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Card name returned in the response: test_card_1_monika": true,
+					"Correct List id value returned in the response": true
+				}
+			]
+		},
+		{
+			"id": "7bcd3638-3a86-436e-94a8-3e13e39849c1",
+			"name": "Create New Card - invalid list id",
+			"url": "https://api.trello.com/1/cards?idList=5eab2b1e96e7d713d25e29&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f&name=test_card_1_monika",
+			"time": 129,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Value returned in the response: invalid value for idList": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: invalid value for idList": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				129
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Value returned in the response: invalid value for idList": true
+				}
+			]
+		},
+		{
+			"id": "2d66d087-3a6d-4719-a688-12fa8a266fb7",
+			"name": "Get a card by its ID",
+			"url": "https://api.trello.com/1/cards/5eb9d2ae89e23411bd3c9b3d?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 220,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Value returned in the response: card_id": true,
+				"Name returned in the response: test_card_1_monika": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: card_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Name returned in the response: test_card_1_monika": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				220
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Value returned in the response: card_id": true,
+					"Name returned in the response: test_card_1_monika": true
+				}
+			]
+		},
+		{
+			"id": "433e758f-66f8-4e90-894e-fa44935f0ef5",
+			"name": "Get Card - invalid card id",
+			"url": "https://api.trello.com/1/cards/5eab2b1e96e7d713d25e29?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 148,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Value returned in the response: invalid id": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: invalid id": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				148
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Value returned in the response: invalid id": true
+				}
+			]
+		},
+		{
+			"id": "5fc1495c-aeb6-4648-9d7f-49104f72cfde",
+			"name": "Delete Card",
+			"url": "https://api.trello.com/1/cards/5eb9d2ae89e23411bd3c9b3d?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 269,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				269
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "ade71ae7-20fe-491b-94e4-6500f9bd390b",
+			"name": "Delete Card - invalid card id",
+			"url": "https://api.trello.com/1/cards/5eab2b1e96e7d713d25e29?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 128,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Value returned in the response: invalid id": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: invalid id": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				128
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Value returned in the response: invalid id": true
+				}
+			]
+		},
+		{
+			"id": "51dacc86-1d01-4d63-92a9-4fdd4ac386ad",
+			"name": "Delete Card - already deleted card id",
+			"url": "https://api.trello.com/1/cards/5eb9c75af9660b72a23468c9?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 138,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Value returned in the response: The requested resource was not found.": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Value returned in the response: The requested resource was not found.": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				138
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Value returned in the response: The requested resource was not found.": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2099,
+	"collection": {
+		"requests": [
+			{
+				"id": "14597926-12f1-4b2f-b6a2-4f07b4e87bae",
+				"method": "POST"
+			},
+			{
+				"id": "4a275978-76ab-4fd8-a75c-ac97f6f3b0e0",
+				"method": "POST"
+			},
+			{
+				"id": "057dae35-27fb-48b2-a127-a30b7ce3710f",
+				"method": "POST"
+			},
+			{
+				"id": "3959b830-6724-41fd-963f-2d183c27ec19",
+				"method": "POST"
+			},
+			{
+				"id": "7bcd3638-3a86-436e-94a8-3e13e39849c1",
+				"method": "POST"
+			},
+			{
+				"id": "2d66d087-3a6d-4719-a688-12fa8a266fb7",
+				"method": "GET"
+			},
+			{
+				"id": "433e758f-66f8-4e90-894e-fa44935f0ef5",
+				"method": "GET"
+			},
+			{
+				"id": "5fc1495c-aeb6-4648-9d7f-49104f72cfde",
+				"method": "DELETE"
+			},
+			{
+				"id": "ade71ae7-20fe-491b-94e4-6500f9bd390b",
+				"method": "DELETE"
+			},
+			{
+				"id": "51dacc86-1d01-4d63-92a9-4fdd4ac386ad",
+				"method": "DELETE"
+			}
+		]
+	}
+}
