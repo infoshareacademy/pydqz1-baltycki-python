@@ -5,20 +5,47 @@ Library             String
 Suite Setup         Create Trello Session
 
 *** Variables ***
-${URL}                         https://api.trello.com
-${API_KEY}                     1
-${TOKEN}                       2
+# general
+${URL}                      https://api.trello.com
+${API_KEY}                  261ef574aa62fc238f14a55559b9692b
+${TOKEN}                    d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f
+${BROWSER}                  chrome
+# login page
+${LOG_IN}                   //a[@class='_2ZNy4w8Nfa58d1 _1_raGOZzcyjACT']
+${INPUT_USER}               //input[@id='user']
+${INPUT_PASSWORD}           //input[@id='password']
+${LOGIN_BTN}                //input[@id='login']
+${EMAIL}                    tihoco9258@itiomail.com
+${PASSWORD}                 RbCCS9mnaPCb
+${SUBMIT_BTN}               //button[@id='login-submit']//span[@class='css-t5emrf']
+# main page
+${BOARD_TITLE}              //span[@class='js-board-editing-target board-header-btn-text']
+${X_BTN}                    //a[@class='board-menu-header-close-button icon-lg icon-close js-hide-sidebar']
+${LIST_TITLE}               //div[@class='list-header js-list-header u-clearfix is-menu-shown is-subscribe-shown']//div[@class='list-header-target js-editing-target']
 
 *** Test Cases ***
 
 Create Board Request Should Create New Board
     [Tags]                                            Boards
     ${board_name}           Generate Random String    8           [LETTERS][NUMBERS]
+    Set Suite Variable      ${BOARD_NAME}             ${board_name}
     ${resp}                 Post Request              trello      /1/boards/?name=${board_name}&key=${API_KEY}&token=${TOKEN}
     Request Should Be Successful                      ${resp}
     Validate Board Name In The Response               ${resp}     ${board_name}
     ${existing_board_id}    Collect Board Id          ${resp}
     Set Suite Variable      ${BOARD_ID}               ${existing_board_id}
+    ${board_url}            Collect Board Url         ${resp}
+    Set Suite Variable      ${BOARD_URL}              ${board_url}
+
+Check Board Is Created In GUI With Correct Name
+    [Tags]          GUI
+    [Setup]         Browser Setup
+                    Log In
+    Wait Until Page Contains Element      ${BOARD_TITLE}
+    Click Element                         ${X_BTN}
+    ${board_title}  Get Text              ${BOARD_TITLE}
+    Should Be Equal As Strings            ${board_title}        ${BOARD_NAME}
+    [Teardown]      Close Browser
 
 Get Board Request With Valid Id Should Return Expected Board 
     [Tags]                              Boards
@@ -118,6 +145,18 @@ Collect List Id
     ${list_id}           Set Variable          ${resp_dict}[id]
     Log                  ${list_id}
     [Return]             ${list_id}
+
+Browser Setup
+    Open Browser            ${BOARD_URL}                ${BROWSER}
+    Set Selenium Speed      0.2 second
+
+Log In
+    Click Element                         ${LOG_IN}
+    Wait Until Page Contains Element      ${INPUT_USER}
+    Input Text                            ${INPUT_USER}         ${EMAIL}
+    Click Element                         ${LOGIN_BTN}
+    Input Text                            ${INPUT_PASSWORD}     ${PASSWORD}
+    Click Element                         ${SUBMIT_BTN}
 
 *** Comments ***
 
