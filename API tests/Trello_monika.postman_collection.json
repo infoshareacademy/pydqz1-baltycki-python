@@ -1,0 +1,652 @@
+{
+	"info": {
+		"_postman_id": "d4631c00-d0e6-4547-aa93-3b04955005e0",
+		"name": "Trello_postman_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b332a4da-ab4a-4896-b2ab-4889ec5927b5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Board name: test_board_1_monika returned in the response\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"test_board_1_monika\");",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"board_id\", jsonData.id);",
+							"pm.collectionVariables.set(\"board_name\", jsonData.name);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/boards/?name=test_board_1_monika&key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "test_board_1_monika"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				},
+				"description": "Valid Create Board Request"
+			},
+			"response": []
+		},
+		{
+			"name": "Create New List on Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eaffa4fe-2155-49ec-9b8f-cad06022d890",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"List name returned in the response: test_list_1_monika\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"test_list_1_monika\");",
+							"});",
+							"",
+							"var boardid = pm.collectionVariables.get(\"board_id\");",
+							"",
+							"pm.test(\"Correct Board id value returned in the response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.idBoard).to.eql(boardid);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"list_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/lists?name=test_list_1_monika&idBoard={{board_id}}&key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "test_list_1_monika"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{board_id}}"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				},
+				"description": "Valid Create New List Request"
+			},
+			"response": []
+		},
+		{
+			"name": "Create New List - invalid board_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b03bfa92-f5c5-41e0-8a24-764061438e2e",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Value returned in the response: invalid value for idBoard\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"invalid value for idBoard\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/lists?name=test_list_1_monika&idBoard={{invalid_board_id}}&key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "test_list_1_monika"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{invalid_board_id}}"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				},
+				"description": "Create New List Request With Invalid Board Id"
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Card on List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c525e14-c982-4d52-b14f-66c276afe787",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Card name returned in the response: test_card_1_monika\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"test_card_1_monika\");",
+							"});",
+							"",
+							"var listid = pm.collectionVariables.get(\"list_id\");",
+							"",
+							"pm.test(\"Correct List id value returned in the response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.idList).to.eql(listid);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"card_id\", jsonData.id);",
+							"pm.collectionVariables.set(\"card_name\", jsonData.name);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/cards?idList={{list_id}}&key={{api_key}}&token={{token}}&name=test_card_1_monika",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "idList",
+							"value": "{{list_id}}"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "name",
+							"value": "test_card_1_monika"
+						}
+					]
+				},
+				"description": "Valid Create New Card Request"
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Card - invalid list id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f5d9af9-6e08-4a88-bda5-29a0d315ac92",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Value returned in the response: invalid value for idList\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"invalid value for idList\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/cards?idList={{invalid_list_id}}&key={{api_key}}&token={{token}}&name=test_card_1_monika",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "idList",
+							"value": "{{invalid_list_id}}"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "name",
+							"value": "test_card_1_monika"
+						}
+					]
+				},
+				"description": "Create New Card Request With Invalid List Id"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a card by its ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7d245402-68d3-408f-a5c6-36c722ccc797",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var cardid = pm.collectionVariables.get(\"card_id\");",
+							"",
+							"pm.test(\"Value returned in the response: card_id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(cardid);",
+							"});",
+							"",
+							"pm.test(\"Name returned in the response: test_card_1_monika\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"test_card_1_monika\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/cards/{{card_id}}?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{card_id}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				},
+				"description": "Valid Get Card Request"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Card - invalid card id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3666075c-938a-4f4c-a2d3-4200864c2001",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Value returned in the response: invalid id\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"invalid id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/cards/{{invalid_card_id}}?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{invalid_card_id}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				},
+				"description": "Get Card Request With Invalid Card Id"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ec2e873-88a5-407e-9848-54e01869fde6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/cards/{{card_id}}?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{card_id}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				},
+				"description": "Valid Delete Card Request"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Card - invalid card id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "31488800-7756-4729-b421-9d93fe46ad9d",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Value returned in the response: invalid id\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"invalid id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/cards/{{invalid_card_id}}?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{invalid_card_id}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				},
+				"description": "Delete Card Request With Invalid Id"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Card - already deleted card id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f700903f-e504-48c9-ad61-176345e5807b",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Value returned in the response: The requested resource was not found.\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"The requested resource was not found.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/cards/{{deleted_card_id}}?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{deleted_card_id}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b16a2bf6-0dc4-4565-8721-6f462aad9e94",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ab6060ee-d536-4306-8f27-9a26bf0b7eff",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8378e2dc-9b3d-44e2-8822-6d5c77ec1b67",
+			"key": "api_key",
+			"value": "261ef574aa62fc238f14a55559b9692b",
+			"type": "string"
+		},
+		{
+			"id": "cc181c51-f404-4dcd-b2a1-2cb61272f225",
+			"key": "token",
+			"value": "d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"type": "string"
+		},
+		{
+			"id": "6b52fa4e-4832-444b-8e8d-49acae3dcf2a",
+			"key": "board_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "75fcc431-0c1b-48be-8d31-c43c75b7c796",
+			"key": "list_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "b0bae3ba-e15a-47a3-9ab6-ca6865620dec",
+			"key": "invalid_board_id",
+			"value": "8eab2b1e96e7d713d25e",
+			"type": "string"
+		},
+		{
+			"id": "99261296-1520-4f0f-8f1d-408415f409d8",
+			"key": "board_name",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "ec986406-c738-4503-b69f-5394d2395214",
+			"key": "invalid_list_id",
+			"value": "5eb9b7322f1ad58df52c85b9",
+			"type": "string"
+		},
+		{
+			"id": "fa00690e-97ad-409b-8714-17b52da5ff4c",
+			"key": "list_name",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "a64a00b4-569e-4609-9096-bdf741fe7fe5",
+			"key": "card_name",
+			"value": "test_card_1_monika",
+			"type": "string"
+		},
+		{
+			"id": "e1b2db83-d82e-4e53-9736-51584a1aa74f",
+			"key": "card_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "6a951ca1-ecbc-473d-a070-e0ce3950112e",
+			"key": "invalid_card_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "f011f917-4f01-4bf7-9336-998a0e414f98",
+			"key": "api",
+			"value": "https://api.trello.com",
+			"type": "string"
+		},
+		{
+			"id": "a7ec269f-6739-4675-9de9-a6ea3745e843",
+			"key": "deleted_card_id",
+			"value": "5eb9c75af9660b72a23468c9",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
