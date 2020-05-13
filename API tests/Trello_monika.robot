@@ -3,13 +3,14 @@ Documentation       Trello API tests
 Library             RequestsLibrary
 Library             String
 Library             Collections
-Suite Setup         Create Trello Session
+Library             SeleniumLibrary
+Suite Setup         Create Session For Endpoint
 
 
 *** Variables ***
 ${URL}                         https://api.trello.com
-${API_KEY}                     261ef574aa62fc238f14a55559b9692b
-${TOKEN}                       d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f
+${API_KEY}                     368d48aa730effc645b49fb64ba9b0fd
+${TOKEN}                       d8a6adf89ba3e29f33f93c0c2b0f2f589dc6705bfa6ebdcbb7b9a836c856cc19
 
 
 *** Test Cases ***
@@ -87,8 +88,8 @@ Delete Card Request with Already Deleted Card Id
     Status Should Be                   404                                 ${resp}             msg=The requested resource was not found.
 
 *** Keywords ***
-Create Trello Session
-    Create Session                     trello                              ${URL}
+Create Session For Endpoint
+    Create Session      trello                  ${URL}
 
 Get Id
     [Arguments]          ${resp}
@@ -132,5 +133,5 @@ Validate Response Field
     ${resp_dict}                                Set Variable         ${resp.json()}
     Dictionary Should Contain Item              ${resp_dict}         ${key}                   ${expected_value}
 
-*** Comments ***
+
 
