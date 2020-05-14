@@ -1,0 +1,405 @@
+{
+	"id": "988123fb-1a8f-4e8a-bfd9-56566ca9245b",
+	"name": "Trello_Mateusz",
+	"timestamp": "2020-05-14T19:53:33.463Z",
+	"collection_id": "0070c144-5545-43bf-bd1e-d2f0eeae9fc6",
+	"folder_id": 0,
+	"environment_id": "747c6bbb-4607-490e-bee4-acde42172706",
+	"totalPass": 27,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "3109a08a-4538-48e4-951f-6eb45f0d5fee",
+			"name": "Create Board Mateusz_Test",
+			"url": "https://api.trello.com/1/boards/?name=Mateusz_Test&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 253,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 1000ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				253
+			],
+			"allTests": [
+				{
+					"Response time is less than 1000ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "bb2f38bd-663a-48fd-b587-ed8bf74b7cc8",
+			"name": "Create new list New_list",
+			"url": "https://api.trello.com/1/lists?name=New_list&idBoard=5ebda1be76aa114a1ca1efa8&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 252,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 1000ms": true,
+				"Status code is 200": true,
+				"Content-Type is application/json; charset=utf-8": true,
+				"Correct Board Name": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is application/json; charset=utf-8": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Correct Board Name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				252
+			],
+			"allTests": [
+				{
+					"Response time is less than 1000ms": true,
+					"Status code is 200": true,
+					"Content-Type is application/json; charset=utf-8": true,
+					"Correct Board Name": true
+				}
+			]
+		},
+		{
+			"id": "73e81c0d-e5ec-4e36-9e97-030eba685542",
+			"name": "Create card in list To_Test",
+			"url": "https://api.trello.com/1/cards?name=Test_01&idList=5ebd9370214fe93f0a5c2d7f&key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 303,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 1000ms": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				303
+			],
+			"allTests": [
+				{
+					"Response time is less than 1000ms": true
+				}
+			]
+		},
+		{
+			"id": "0e66d62b-095f-49c5-b568-d61699b81089",
+			"name": "Get Cards in a List",
+			"url": "https://api.trello.com/1/lists/5ebd9370214fe93f0a5c2d7f/cards?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 167,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 1000ms": true,
+				"Status code is 200": true,
+				"Content-Type is application/json; charset=utf-8": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is application/json; charset=utf-8": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				167
+			],
+			"allTests": [
+				{
+					"Response time is less than 1000ms": true,
+					"Status code is 200": true,
+					"Content-Type is application/json; charset=utf-8": true
+				}
+			]
+		},
+		{
+			"id": "d43a1a5c-27cd-4b80-a096-4938a49c9006",
+			"name": "Get a Lists of Cards",
+			"url": "https://api.trello.com/1/cards/5ebda1be3c761b4c32430a5d/list?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 166,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 1000ms": true,
+				"Status code is 200": true,
+				"Content-Type is application/json; charset=utf-8": true,
+				"Correct Card name in Cards in a List ": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is application/json; charset=utf-8": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Correct Card name in Cards in a List ": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				166
+			],
+			"allTests": [
+				{
+					"Response time is less than 1000ms": true,
+					"Status code is 200": true,
+					"Content-Type is application/json; charset=utf-8": true,
+					"Correct Card name in Cards in a List ": true
+				}
+			]
+		},
+		{
+			"id": "a8bf66ba-7a84-45cc-9b1f-7a00af49734a",
+			"name": "Get a Lists of Cards Invalid Card_ID",
+			"url": "https://api.trello.com/1/cards/2342342342/list?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 156,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is less than 1000ms": true,
+				"Status code is 400": true,
+				"Body has error message": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				156
+			],
+			"allTests": [
+				{
+					"Response time is less than 1000ms": true,
+					"Status code is 400": true,
+					"Body has error message": true
+				}
+			]
+		},
+		{
+			"id": "c7ab242f-e2a1-4191-bae5-e702377e5071",
+			"name": "Get the Board a List is on",
+			"url": "https://api.trello.com/1/lists/5ebd9370214fe93f0a5c2d7f/board?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 216,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 1000ms": true,
+				"Status code is 200": true,
+				"Content-Type is application/json; charset=utf-8": true,
+				"Correct Board Name": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is application/json; charset=utf-8": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Correct Board Name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				216
+			],
+			"allTests": [
+				{
+					"Response time is less than 1000ms": true,
+					"Status code is 200": true,
+					"Content-Type is application/json; charset=utf-8": true,
+					"Correct Board Name": true
+				}
+			]
+		},
+		{
+			"id": "e0d610f2-7d35-4f4c-a4ea-690426b6cc9f",
+			"name": "Get Cards in a List Invalid List_ID",
+			"url": "https://api.trello.com/1/lists/5ebd094cf28bc2427209358/cards?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 152,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is less than 1000ms": true,
+				"Status code is 400": true,
+				"Body has error message": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				152
+			],
+			"allTests": [
+				{
+					"Response time is less than 1000ms": true,
+					"Status code is 400": true,
+					"Body has error message": true
+				}
+			]
+		},
+		{
+			"id": "bb1e43a1-6ce5-4c50-b14a-8380a514b611",
+			"name": "Get the Board a List invalid List_ID",
+			"url": "https://api.trello.com/1/lists/5ebd094cf28bc2427209358/board?key=261ef574aa62fc238f14a55559b9692b&token=d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"time": 152,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is less than 1000ms": true,
+				"Status code is 400": true,
+				"Body has error message": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body has error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				152
+			],
+			"allTests": [
+				{
+					"Response time is less than 1000ms": true,
+					"Status code is 400": true,
+					"Body has error message": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1817,
+	"collection": {
+		"requests": [
+			{
+				"id": "3109a08a-4538-48e4-951f-6eb45f0d5fee",
+				"method": "POST"
+			},
+			{
+				"id": "bb2f38bd-663a-48fd-b587-ed8bf74b7cc8",
+				"method": "POST"
+			},
+			{
+				"id": "73e81c0d-e5ec-4e36-9e97-030eba685542",
+				"method": "POST"
+			},
+			{
+				"id": "0e66d62b-095f-49c5-b568-d61699b81089",
+				"method": "GET"
+			},
+			{
+				"id": "d43a1a5c-27cd-4b80-a096-4938a49c9006",
+				"method": "GET"
+			},
+			{
+				"id": "a8bf66ba-7a84-45cc-9b1f-7a00af49734a",
+				"method": "GET"
+			},
+			{
+				"id": "c7ab242f-e2a1-4191-bae5-e702377e5071",
+				"method": "GET"
+			},
+			{
+				"id": "e0d610f2-7d35-4f4c-a4ea-690426b6cc9f",
+				"method": "GET"
+			},
+			{
+				"id": "bb1e43a1-6ce5-4c50-b14a-8380a514b611",
+				"method": "GET"
+			}
+		]
+	}
+}

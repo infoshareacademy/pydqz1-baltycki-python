@@ -1,0 +1,658 @@
+{
+	"info": {
+		"_postman_id": "0070c144-5545-43bf-bd1e-d2f0eeae9fc6",
+		"name": "Trello_Mateusz",
+		"description": " Get Cards in a List, Get the Board a List is On, Create a new List, Get a Lists of Cards",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Board Mateusz_Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a864329a-48ed-43cc-b340-d67b1debace4",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.collectionVariables.set(\"board_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/1/boards/?name=Mateusz_Test&key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Mateusz_Test"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new list New_list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "acbc832b-ac64-4145-9c5d-6818ce62cd4b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is application/json; charset=utf-8\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Correct Board Name\", function () {",
+							"    pm.expect(jsonData.name).to.eql(\"New_list\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/1/lists?name=New_list&idBoard={{board_id}}&key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "New_list"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{board_id}}"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create card in list To_Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b5afb5de-668e-41bf-a619-255103895c26",
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.collectionVariables.set(\"card_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/1/cards?name=Test_01&idList={{list_id}}&key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Test_01"
+						},
+						{
+							"key": "idList",
+							"value": "{{list_id}}"
+						},
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{board_id}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cards in a List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a8e48c67-00e4-4616-abfd-49610f569fa8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is application/json; charset=utf-8\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/1/lists/{{list_id}}/cards?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{list_id}}",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Lists of Cards",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "761076d3-43d9-4efc-b8d2-6cb6f1e8e2ff",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is application/json; charset=utf-8\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"});\r",
+							"\r",
+							"var cardname = pm.collectionVariables.get(\"card_name\");\r",
+							"var board_id = pm.collectionVariables.get(\"board_id\");\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Correct Card name in Cards in a List \", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(\"New_list\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/1/cards/{{card_id}}/list?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{card_id}}",
+						"list"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Lists of Cards Invalid Card_ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b680d443-7958-459e-9a0b-7e5f8542ccc1",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Body has error message\", function () {\r",
+							"    pm.response.to.have.body(\"invalid id\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/1/cards/2342342342/list?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"2342342342",
+						"list"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the Board a List is on",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "10318ca9-5dd2-4d20-b4d6-fb391f11b2e6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is application/json; charset=utf-8\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Correct Board Name\", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(\"Mateusz_Test\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/1/lists/{{list_id}}/board?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{list_id}}",
+						"board"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cards in a List Invalid List_ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "de45292a-821e-4c8c-b75e-df6227ddb38f",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has error message\", function () {\r",
+							"    pm.response.to.have.body(\"invalid id\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/1/lists/{{invalid_list_id}}/cards?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{invalid_list_id}}",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the Board a List invalid List_ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2d0667f8-be76-4b94-82e2-3a9453d2f397",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has error message\", function () {\r",
+							"    pm.response.to.have.body(\"invalid id\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/1/lists/{{invalid_list_id}}/board?key={{api_key}}&token={{token}}",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{invalid_list_id}}",
+						"board"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "88da86ce-168f-4635-a41f-3c817c73ebcf",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "9ce9d972-ca57-4bed-89f6-d9cedb546c21",
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Response time is less than 1000ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1a2a97c1-5486-44c3-8e54-69449e10ab9a",
+			"key": "api",
+			"value": "https://api.trello.com",
+			"type": "string"
+		},
+		{
+			"id": "1721351b-3c58-442b-8bf4-41e012463bd8",
+			"key": "api_key",
+			"value": "261ef574aa62fc238f14a55559b9692b",
+			"type": "string"
+		},
+		{
+			"id": "6f1b72ab-42a8-42c5-82f1-ddc27f383001",
+			"key": "token",
+			"value": "d6d712ce02727605ba3cef530c08e00e9dccd04f36343302d61fa0679f51513f",
+			"type": "string"
+		},
+		{
+			"id": "8bda5c49-14d7-44c2-a98f-89f2f17d4ecb",
+			"key": "board_name",
+			"value": "Mateusz_Test",
+			"type": "string"
+		},
+		{
+			"id": "2d22f284-c5f7-4ed7-b170-04ce18ea9cdf",
+			"key": "list_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "9341caf8-165d-4032-8fe7-096d3fd00716",
+			"key": "board_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "d39c96d5-4566-498c-9edc-f2cacd0e7c07",
+			"key": "card_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "acf1289a-76a4-4251-b15e-16d099f2b5a8",
+			"key": "invalid_list_id",
+			"value": "5ebd094cf28bc2427209358",
+			"type": "string"
+		},
+		{
+			"id": "afe32e12-56d6-4f6c-8e93-5b1006b08eeb",
+			"key": "card_name",
+			"value": "Test_01",
+			"type": "string"
+		},
+		{
+			"id": "f0e7c1b1-6114-4041-b47e-61eff8a0ad61",
+			"key": "board_name2",
+			"value": "Mateusz_Test",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
