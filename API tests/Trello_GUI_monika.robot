@@ -24,12 +24,12 @@ ${BOARD_TITLE1}                //li[.//text() = 'GUI_test_monika1']
 ${BOARD_TITLE2}                //li[.//text() = 'GUI_test_monika2']
 
 *** Test Cases ***
-Response Should Contain Given Board Name
+Check given board name exists_1
     [Tags]                           Validation
     ${board_title}                   Get Text           ${BOARD_TITLE1}
     Should Be Equal As Strings       ${board_title}     GUI_test_monika1
 
-Response Should Contain Given Board Name2
+Check given board name exists_2
     [Tags]                           Validation
     ${board_title}                   Get Text           ${BOARD_TITLE2}
     Should Be Equal As Strings       ${board_title}     GUI_test_monika2
@@ -37,7 +37,10 @@ Response Should Contain Given Board Name2
 *** Keywords ***
 Create Session For Endpoint
     Create Session      trello                  ${URL}
-    Browser Setup
+    Open Browser
+    ...                                   https://trello.com/login?returnUrl=%2Fannakowalska69%2Fboards
+    ...                                   ${BROWSER}
+    Log In
 
 Log In
     Input Text                            ${INPUT_USER}         ${EMAIL}
@@ -48,13 +51,4 @@ Log In
     Wait Until Page Contains Element       //*[@id="header"]/div[2]/button[4]/div/span
     ${token}        Get Cookie            token
     Log To Console                        ${token}
-
-Open Board
-    Open Browser
-    ...                                   https://trello.com/login?returnUrl=%2Fannakowalska69%2Fboards
-    ...                                   ${BROWSER}
-
-Browser Setup
-    Open Board
-    Log In
 
