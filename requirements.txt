@@ -6,3 +6,5 @@ webdriver-manager==2.3.0
 allure-pytest==2.8.12
 assertpy==1.0
 pytest-xdist==1.31.0
+robotframework==3.2.1
+robotframework-seleniumlibrary==4.4.0
