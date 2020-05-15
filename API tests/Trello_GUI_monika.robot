@@ -10,6 +10,7 @@ Suite Teardown      Close Browser
 
 *** Variables ***
 ${URL}                         https://trello.com
+${URL_BOARD}                   https://trello.com/login?returnUrl=%2Fannakowalska69%2Fboards
 ${BROWSER}                     chrome
 ${EMAIL}                       ratodi1378@zaelmo.com
 ${DOMAIN}                      trello.com
@@ -22,6 +23,7 @@ ${LOGIN_BTN}                   //input[@id='login']
 ${SUBMIT_BTN}                  //button[@id='login-submit']//span[@class='css-t5emrf']
 ${BOARD_TITLE1}                //li[.//text() = 'GUI_test_monika1']
 ${BOARD_TITLE2}                //li[.//text() = 'GUI_test_monika2']
+${ACCOUNT_BUTTON}              //*[@id="header"]/div[2]/button[4]/div/span
 
 *** Test Cases ***
 Check given board name exists_1
@@ -38,7 +40,7 @@ Check given board name exists_2
 Create Session For Endpoint
     Create Session      trello                  ${URL}
     Open Browser
-    ...                                   https://trello.com/login?returnUrl=%2Fannakowalska69%2Fboards
+    ...                                   ${URL_BOARD}
     ...                                   ${BROWSER}
     Log In
 
@@ -48,7 +50,8 @@ Log In
     Wait Until Page Contains Element      ${SUBMIT_BTN}
     Input Text                            ${INPUT_PASSWORD}     ${PASSWORD}
     Click Element                         ${SUBMIT_BTN}
-    Wait Until Page Contains Element       //*[@id="header"]/div[2]/button[4]/div/span
+    sleep                                 5s
+    Wait Until Page Contains Element       ${ACCOUNT_BUTTON}
     ${token}        Get Cookie            token
     Log To Console                        ${token}
 
