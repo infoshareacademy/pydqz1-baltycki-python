@@ -9,7 +9,15 @@ and Robot Framework report (http://robotframework.org/QuickStartGuide/report.htm
 
 ## Installation
 
-shell git clone https://github.com/infoshareacademy/pydqz1-baltycki-python.git
+Open terminal and run following commands:
+1.
+      ```console
+          user@machine:~$ git clone https://github.com/infoshareacademy/pydqz1-baltycki-python.git
+          user@machine:~$ cd pydqz1-baltycki-python/
+          user@machine:~/pydqz1-baltycki-python$ python3 -m venv venv
+          user@machine:~/pydqz1-baltycki-python$ source venv/bin/activate
+          user@machine:~/pydqz1-baltycki-python$ pip install -r requirements.txt 
+      ```
 
 ## Usage
 1. Requirements:
@@ -22,7 +30,7 @@ shell git clone https://github.com/infoshareacademy/pydqz1-baltycki-python.git
     1. open terminal and run following command:
     
         ```console
-          user@baltycki-python:~$ postman
+          user@machine:~$ postman
         ```
     2. In Postman go to File and Import test files from /api-test directory.
     3. Click Run button to start tests.
@@ -30,7 +38,7 @@ shell git clone https://github.com/infoshareacademy/pydqz1-baltycki-python.git
     1.  open terminal and run following command:
     
         ```console
-          user@baltycki-python:~$ robot api-tests/
+          user@machine:~$ robot api-tests/
         ```
     2. After tests were finished in api-tests/ directory there should be files:
         * report.html
@@ -48,6 +56,7 @@ We tested the following Trello API features:
 4. Get Cards in a List, Get the Board a List is On, Create a new List, Get a Lists of Cards
 
 ## Authors and acknowledgment
+
 This project wouldn't be in the current stage without the hard work of the following individuals:
 * **Agnieszka**
 * **Monika**
@@ -57,4 +66,5 @@ This project wouldn't be in the current stage without the hard work of the follo
 We would also like to thank Jacek for his guidance and support.
 
 ## Project status
+
 The project is still in the development phase.
