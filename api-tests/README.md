@@ -10,14 +10,13 @@ and Robot Framework report (http://robotframework.org/QuickStartGuide/report.htm
 ## Installation
 
 Open terminal and run following commands:
-1.
-      ```console
-          user@machine:~$ git clone https://github.com/infoshareacademy/pydqz1-baltycki-python.git
-          user@machine:~$ cd pydqz1-baltycki-python/
-          user@machine:~/pydqz1-baltycki-python$ python3 -m venv venv
-          user@machine:~/pydqz1-baltycki-python$ source venv/bin/activate
-          user@machine:~/pydqz1-baltycki-python$ pip install -r requirements.txt 
-      ```
+```console
+user@machine:~$ git clone https://github.com/infoshareacademy/pydqz1-baltycki-python.git
+user@machine:~$ cd pydqz1-baltycki-python/
+user@machine:~/pydqz1-baltycki-python$ python3 -m venv venv
+user@machine:~/pydqz1-baltycki-python$ source venv/bin/activate
+user@machine:~/pydqz1-baltycki-python$ pip install -r requirements.txt 
+```
 
 ## Usage
 1. Requirements:
