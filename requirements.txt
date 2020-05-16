@@ -7,6 +7,5 @@ allure-pytest==2.8.13
 assertpy==1.0
 pytest-xdist==1.32.0
 robotframework==3.2.1
+robotframework-requests==0.7.0
 robotframework-seleniumlibrary==4.4.0
-requests==2.23.0
-robotframework-requests
