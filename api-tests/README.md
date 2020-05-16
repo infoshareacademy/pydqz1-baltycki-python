@@ -1,4 +1,4 @@
-# Automated tests using Postman and Robot Framework
+# Automated Trello API test using Postman & Robot Framework
 
 This is a project for automated tests for API app: https://api.trello.com/ using Postman and Robot Framework.
 
